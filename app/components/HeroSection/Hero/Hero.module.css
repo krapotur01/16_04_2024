@@ -1,0 +1,29 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 11px;
+  background-color: #f1faff;
+  width: auto;
+  flex-grow: 1;
+}
+
+.header {
+  margin-top: 6px;
+  color: var(--black);
+}
+
+.line {
+  position: absolute;
+  z-index: 5;
+  top: 115px;
+  right: 10px;
+}
+
+.p {
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 5%;
+  color: var(--primary);
+}

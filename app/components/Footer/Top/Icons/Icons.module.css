@@ -1,0 +1,22 @@
+.icons {
+  list-style: none;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+}
+
+.icon {
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 5px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.4s;
+}
+
+.icon:hover {
+  opacity: 0.9;
+  background-color: var(--primary);
+}

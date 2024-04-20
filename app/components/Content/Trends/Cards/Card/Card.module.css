@@ -1,0 +1,51 @@
+.card {
+  width: 270px;
+  height: 387px;
+  position: relative;
+}
+
+.status {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 5px 0;
+
+  color: var(--white);
+  font-size: 12px;
+  line-height: 15.6px;
+  font-weight: 600;
+  padding: 4px 9px;
+}
+
+.status_sale {
+  background-color: var(--primary);
+}
+
+.status_new {
+  background-color: var(--blue);
+}
+
+.price {
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 600;
+}
+
+.price_discount {
+  color: var(--primary);
+}
+
+.price_ghost {
+  color: var(--grey-light);
+  text-decoration: line-through;
+}
+
+.icons {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card:hover .icons {
+  opacity: 1;
+}

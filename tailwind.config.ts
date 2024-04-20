@@ -14,6 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    fontSize: {
+      sm: ["14px", "20px"],
+      base: ["16px", "20px"],
+      herop: ["27px", "26px"],
+      xl: ["24px", "32px"],
+    },
   },
   plugins: [],
 };

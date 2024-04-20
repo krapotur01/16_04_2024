@@ -1,0 +1,28 @@
+.block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding-top: 12px;
+}
+
+.icons {
+  position: relative;
+  cursor: pointer;
+}
+
+.icons:hover {
+  opacity: 0.8;
+}
+
+.icon_number {
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  right: -9px;
+  background-color: var(--primary);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 7px;
+  line-height: 5px;
+}
