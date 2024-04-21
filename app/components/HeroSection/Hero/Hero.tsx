@@ -4,8 +4,9 @@ import styles from "./Hero.module.css";
 import line from "../../../../public/hero_header_line.png";
 import Furniture from "../../../../public/Furniture.svg";
 import { Button, Heading } from "../..";
-import { Offers } from './Offers/Offers';
-import { offer } from '../../../api/offerData'; // передаем внешние данные в компонент
+import { Offers } from "./Offers/Offers";
+import { offer } from "../../../api/offerData"; // передаем внешние данные в компонент
+import { Pagination } from "./Pagination/Pagination";
 
 export const Hero = () => {
   return (
@@ -36,6 +37,7 @@ export const Hero = () => {
         <Furniture />
         <Offers {...offer} />
       </div>
+      <Pagination />
     </div>
   );
 };
