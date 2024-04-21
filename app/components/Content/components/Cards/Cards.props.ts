@@ -1,4 +1,4 @@
-interface ChairProps {
+interface FurnitureProps {
   status: string;
   pic: string;
   product: string;
@@ -8,6 +8,6 @@ interface ChairProps {
   rating: number;
 }
 
-export interface ChairsProps {
-	[index: number]: ChairProps
+export interface FurnituresProps {
+  [index: number]: FurnitureProps;
 }

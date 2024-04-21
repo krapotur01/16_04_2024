@@ -15,6 +15,7 @@ const config: Config = {
       },
     },
     fontSize: {
+      xs: ["7px", "9px"],
       sm: ["14px", "20px"],
       base: ["16px", "20px"],
       herop: ["27px", "26px"],

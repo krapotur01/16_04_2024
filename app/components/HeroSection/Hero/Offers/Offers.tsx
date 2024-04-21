@@ -20,9 +20,9 @@ export const Offers = (offers: OffersProps) => {
           height={i.h}
         />
         <span className={styles.span}>{i.price}</span>
-        <Heading tag="h5" className="mt-2 mb-[6px]">
+        <h4 className="mt-2 mb-[6px] text-xs text-black font-medium">
           {i.name}
-        </Heading>
+        </h4>
       </div>
     );
   });

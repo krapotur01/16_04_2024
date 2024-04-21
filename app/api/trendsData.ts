@@ -1,3 +1,9 @@
+export const headers = [
+  { style: "primary", value: "Top Products" },
+  { style: "ghost", value: "New Arrivals" },
+  { style: "ghost", value: "Best Sellers" },
+];
+
 export const chairs = [
   {
     status: "New",

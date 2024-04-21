@@ -2,14 +2,14 @@ import React from "react";
 import { Heading } from "../..";
 import { Cards } from "../components/Cards/Cards";
 import { Headers } from "../components/Headers/Headers";
-import { chairs, headers } from "../../../api/trendsData";
+import { ourProducts, headers } from "../../../api/ourProductsData";
 
-export const Trends = (): JSX.Element => {
+export const OurProducts = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center mt-28 w-full">
-      <Heading tag="h2">TRENDING</Heading>
+      <Heading tag="h2">OUR PRODUCTS</Heading>
       <Headers {...headers} />
-      <Cards {...chairs} />
+      <Cards {...ourProducts} />
     </section>
   );
 };

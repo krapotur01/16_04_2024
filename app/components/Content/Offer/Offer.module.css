@@ -1,0 +1,38 @@
+.offer_main {
+  background-image: url(./pic/Modern_Furniture_Collections.png);
+  width: inherit;
+  max-width: 670px;
+  height: inherit;
+  padding: 49px 0 0 31px;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  padding: 49px 0 0 31px;
+  gap: 13px;
+}
+
+.col_2 {
+  width: 485px;
+  height: 247px;
+}
+
+.bookcase {
+  background-image: url(./pic/Geometric_Bookcase.png);
+}
+
+.sofa {
+  background-image: url(./pic/Minimal_Sofa_collections.png);
+}
+
+.green {
+  color: var(--primary);
+}
+
+.span {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--grey);
+}
