@@ -3,7 +3,7 @@ import Logo from "../../../../public/Logo.svg";
 import { Lists_block } from "./Lists_block/Lists_block";
 import styles from "./Top.module.css";
 import { Paragraph } from "../..";
-import { Icons } from './Icons/Icons';
+import { Icons } from "./IconsComponent/Icons";
 
 export const Top = () => {
   return (

@@ -3,39 +3,40 @@ import { Heading, Rating } from "@/app/components";
 import styles from "./Cards.module.css";
 import cn from "classnames";
 import { Icons } from "./Icons_component/Icons";
-import { FurnituresProps } from "./Cards.props";
+import { GetProducts, FurnitureProps } from "./Cards.props";
 
-export const Cards = (props: FurnituresProps) => {
-  const card = Object.values(props).map((chair) => {
+export const Cards = ({ getProducts, headerNames }: GetProducts) => {
+  const getProductsItem: FurnitureProps = getProducts(headerNames.firstHeader);
+
+  const card = Object.values(getProductsItem).map((i) => {
     return (
-      <div className={styles.card} key={chair.name}>
+      <div className={styles.card} key={i.name}>
         <span
           className={cn(styles.status, {
-            [styles.status_new]: chair.status == "New",
-            [styles.status_sale]: chair.status == "Sale",
-            [styles.status_red]:
-              chair.status != "Sale" && chair.status != "New",
+            [styles.status_new]: i.status == "New",
+            [styles.status_sale]: i.status == "Sale",
+            [styles.status_red]: i.status != "Sale" && i.status != "New",
           })}
         >
-          {chair.status}
+          {i.status}
         </span>
         <Icons className={styles.icons} />
-        <Image src={chair.pic} alt={chair.name} width={269} height={288} />
-        <span className="mt-4 text-gray-400 block">{chair.product}</span>
+        <Image src={i.pic} alt={i.name} width={269} height={288} />
+        <span className="mt-4 text-gray-400 block">{i.product}</span>
         <Heading tag="h5" className="mt-2">
-          {chair.name}
+          {i.name}
         </Heading>
 
         <div className="flex flex-row justify-between mt-2">
           <div className="flex gap-2">
             <span className={cn(styles.price_discount, styles.price)}>
-              {chair.price_discount}
+              {i.price_discount}
             </span>
             <span className={cn(styles.price_ghost, styles.price)}>
-              {chair.price}
+              {i.price}
             </span>
           </div>
-          <Rating rating={chair.rating} isEditable />
+          <Rating rating={i.rating} isEditable />
         </div>
       </div>
     );

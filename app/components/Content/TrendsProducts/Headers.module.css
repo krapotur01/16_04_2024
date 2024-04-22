@@ -1,0 +1,17 @@
+.primary {
+  color: var(--primary);
+  transition: opacity 0.3s;
+}
+
+.primary:hover {
+  opacity: 0.6;
+}
+
+.ghost {
+  color: var(--grey-light);
+  transition: color 0.3s;
+}
+
+.ghost:hover {
+  color: var(--primary);
+}

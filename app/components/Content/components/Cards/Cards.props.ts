@@ -1,4 +1,4 @@
-interface FurnitureProps {
+export interface FurnitureProps {
   status: string;
   pic: string;
   product: string;
@@ -8,6 +8,17 @@ interface FurnitureProps {
   rating: number;
 }
 
-export interface FurnituresProps {
-  [index: number]: FurnitureProps;
+export interface GetProducts {
+  headerNames: {
+    firstHeader: string;
+    secondHeader: string;
+    thirdHeader: string;
+    fourthHeader?: string;
+    fifthHeader?: string;
+  };
+  getProducts: (product: string) => any;
 }
+
+// export interface FurnituresProps {
+//   [index: number]: FurnitureProps;
+// }
