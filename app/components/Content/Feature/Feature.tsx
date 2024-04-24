@@ -29,7 +29,13 @@ export const Feature = () => {
   const feature = features.map((i) => {
     return (
       <div key={i.header} className="flex flex-row items-center gap-4">
-        <Image src={i.src} alt="i.header" width={58} height={58} />
+        <Image
+          src={i.src}
+          alt="i.header"
+          width={0}
+          height={0}
+          className="w-[58px] h-auto"
+        />
         <div className="flex flex-col gap-[2px]">
           <Heading tag="h5" className="bold">
             {i.header}

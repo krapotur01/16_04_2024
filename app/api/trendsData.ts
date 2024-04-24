@@ -1,10 +1,6 @@
 import { FurnitureProps } from "../components/Content/components/Cards/Cards.props";
 
-export const headers = [
-  { style: "primary", value: "Top Products" },
-  { style: "ghost", value: "New Arrivals" },
-  { style: "ghost", value: "Best Sellers" },
-];
+export const headers = ["Top Products", "New Arrivals", "Best Sellers"];
 
 export const topProducts: FurnitureProps[] = [
   {

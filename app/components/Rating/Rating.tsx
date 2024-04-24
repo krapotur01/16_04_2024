@@ -29,6 +29,7 @@ export const Rating = ({
             [styles.filled]: i < currentRating,
             [styles.editable]: isEditable,
           })}
+
           onMouseEnter={() => changeDisplay(i + 1)}
           onMouseLeave={() => changeDisplay(rating)}
           onClick={() => onClick(i + 1)}

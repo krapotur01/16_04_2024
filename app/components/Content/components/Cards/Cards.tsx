@@ -21,7 +21,13 @@ export const Cards = ({ getProducts, headerNames }: GetProducts) => {
           {i.status}
         </span>
         <Icons className={styles.icons} />
-        <Image src={i.pic} alt={i.name} width={269} height={288} />
+        <Image
+          src={i.pic}
+          alt={i.name}
+          width={269}
+          height={288}
+          className="w-[269px] h-[288px]"
+        />
         <span className="mt-4 text-gray-400 block">{i.product}</span>
         <Heading tag="h5" className="mt-2">
           {i.name}

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./Headers.module.css";
 import cn from "classnames";
 import { Heading } from "../..";
@@ -10,6 +12,7 @@ interface Header {
 }
 
 export const OurProducts = ({ header }: Header): JSX.Element => {
+  const [eventValue, setEventValue] = useState<string | null>(headers[0]);
   const headerNames = {
     firstHeader: "ALL_PRODUCTS",
     secondHeader: "NEW_ARRIVALS",
@@ -17,26 +20,31 @@ export const OurProducts = ({ header }: Header): JSX.Element => {
     fourthHeader: "TODAYS_DEALS",
   };
 
-  const headersName = headers.map((i) => {
+  const headerComponent = headers.map((i) => {
     return (
       <Heading
-        key={i.value}
+        key={i}
         tag="h3"
-        className={cn({
-          [styles.primary]: i.style == "primary",
-          [styles.ghost]: i.style == "ghost",
+        className={cn(styles.primary, {
+          [styles.primary]: i == eventValue,
+          [styles.ghost]: i != eventValue,
         })}
+        onClick={(e) => onClick(e)}
       >
-        {i.value}
+        {i}
       </Heading>
     );
   });
+
+  const onClick: React.MouseEventHandler<HTMLHeadingElement> = (e) => {
+    setEventValue((e.target as HTMLElement).textContent);
+  };
 
   return (
     <section className="flex flex-col items-center mt-28 w-full">
       <Heading tag="h2">{header}</Heading>
       <div className="flex flex-row items-center gap-20 mt-11">
-        {headersName}
+        {headerComponent}
       </div>
       <Cards getProducts={getProducts} headerNames={headerNames} />
     </section>
