@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { Heading, Rating } from "@/app/components";
 import styles from "./Cards.module.css";
@@ -5,8 +8,10 @@ import cn from "classnames";
 import { Icons } from "./Icons_component/Icons";
 import { GetProducts, FurnitureProps } from "./Cards.props";
 
-export const Cards = ({ getProducts, headerNames }: GetProducts) => {
-  const getProductsItem: FurnitureProps = getProducts(headerNames.firstHeader);
+export const Cards = ({ getProducts, headerName }: GetProducts) => {
+  useEffect(() => {}, [headerName]);
+
+  const getProductsItem: FurnitureProps = getProducts(headerName);
 
   const card = Object.values(getProductsItem).map((i) => {
     return (

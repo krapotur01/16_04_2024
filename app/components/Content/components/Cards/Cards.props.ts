@@ -9,16 +9,6 @@ export interface FurnitureProps {
 }
 
 export interface GetProducts {
-  headerNames: {
-    firstHeader: string;
-    secondHeader: string;
-    thirdHeader: string;
-    fourthHeader?: string;
-    fifthHeader?: string;
-  };
-  getProducts: (product: string) => any;
+  headerName: string | null;
+  getProducts: (product: string | null) => any;
 }
-
-// export interface FurnituresProps {
-//   [index: number]: FurnitureProps;
-// }
