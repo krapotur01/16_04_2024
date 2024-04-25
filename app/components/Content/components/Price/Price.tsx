@@ -1,11 +1,6 @@
-import React, { ReactNode } from 'react'
+import {PriceProps} from "./Price.props";
 import styles from "./Price.module.css";
 import cn from "classnames";
-
-interface PriceProps {
-	children: ReactNode;
-	price?: 'discount' | 'ghost';
-}
 
 export const Price = ({ children, price }: PriceProps) => {
   return (

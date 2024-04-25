@@ -1,4 +1,4 @@
-import React, { ReactNode, DetailedHTMLProps, HTMLAttributes } from "react";
+import { ReactNode, DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface StatusProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
