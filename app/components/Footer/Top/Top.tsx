@@ -10,7 +10,7 @@ export const Top = () => {
     <div className={styles.top}>
       <div className={styles.logo_column}>
         <Logo />
-        <Paragraph className={styles.p} size="m" color="grey">
+        <Paragraph className={styles.p} size="l" color="grey">
           Funking is the a popular Ecommerce site. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit, sed do eiusmod tempor
         </Paragraph>

@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import { Heading, Rating } from "@/app/components";
+import { Heading, Rating } from "../../..";
+import { Status, Price } from "..";
 import styles from "./Cards.module.css";
-import cn from "classnames";
 import { Icons } from "./Icons_component/Icons";
 import { GetProducts, FurnitureProps } from "./Cards.props";
 
@@ -16,15 +16,9 @@ export const Cards = ({ getProducts, headerName }: GetProducts) => {
   const card = Object.values(getProductsItem).map((i) => {
     return (
       <div className={styles.card} key={i.name}>
-        <span
-          className={cn(styles.status, {
-            [styles.status_new]: i.status == "New",
-            [styles.status_sale]: i.status == "Sale",
-            [styles.status_red]: i.status != "Sale" && i.status != "New",
-          })}
-        >
+        <Status status={i.status} position='left'>
           {i.status}
-        </span>
+        </Status>
         <Icons className={styles.icons} />
         <Image
           src={i.pic}
@@ -40,12 +34,8 @@ export const Cards = ({ getProducts, headerName }: GetProducts) => {
 
         <div className="flex flex-row justify-between mt-2">
           <div className="flex gap-2">
-            <span className={cn(styles.price_discount, styles.price)}>
-              {i.price_discount}
-            </span>
-            <span className={cn(styles.price_ghost, styles.price)}>
-              {i.price}
-            </span>
+            <Price price='discount'>{i.price_discount}</Price>
+            <Price price='ghost'>{i.price}</Price>
           </div>
           <Rating rating={i.rating} isEditable />
         </div>

@@ -8,14 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+    //   backgroundImage: {
+    //     "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+    //     "gradient-conic":
+    //       "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    //   },
     },
     fontSize: {
       xs: ["7px", "9px"],
+      ss: ["12px", "15px"],
       sm: ["14px", "20px"],
       base: ["16px", "20px"],
       herop: ["27px", "26px"],

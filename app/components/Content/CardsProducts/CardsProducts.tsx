@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./Headers.module.css";
 import cn from "classnames";
 import { Heading } from "../..";
-import { Cards } from "../components/Cards/Cards";
+import { Cards } from "../components";
 import { Header } from "./CardsProducts.props";
 import {
   headersTrendProducts,

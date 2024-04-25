@@ -1,0 +1,14 @@
+.price {
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 600;
+}
+
+.price_discount {
+  color: var(--primary);
+}
+
+.price_ghost {
+  color: var(--grey-light);
+  text-decoration: line-through;
+}

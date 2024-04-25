@@ -6,7 +6,7 @@ export const headersTrendProducts: string[] = [
   "Best Sellers",
 ];
 
-export const topProducts: FurnitureProps[] = [
+export const topProductsTrend: FurnitureProps[] = [
   {
     status: "New",
     pic: "/chairs_trend/Minimal_LCD.png",
@@ -81,7 +81,7 @@ export const topProducts: FurnitureProps[] = [
   },
 ];
 
-export const newArrivals: FurnitureProps[] = [
+export const newArrivalsTrend: FurnitureProps[] = [
   {
     status: "Sale",
     pic: "/our_products/Minimal_LCD_chair.png",
@@ -156,7 +156,7 @@ export const newArrivals: FurnitureProps[] = [
   },
 ];
 
-export const bestSellers: FurnitureProps[] = [
+export const bestSellersTrend: FurnitureProps[] = [
   {
     status: "New",
     pic: "/chairs_trend/Minimal_LCD.png",
@@ -234,12 +234,12 @@ export const bestSellers: FurnitureProps[] = [
 export const getTrendProducts = (products: string | null) => {
   switch (products) {
     case "Top Products":
-      return topProducts;
+      return topProductsTrend;
     case "New Arrivals":
-      return newArrivals;
+      return newArrivalsTrend;
     case "Best Sellers":
-      return bestSellers;
+      return bestSellersTrend;
     default:
-      return topProducts;
+      return topProductsTrend;
   }
 };
