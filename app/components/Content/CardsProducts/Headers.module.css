@@ -1,3 +1,7 @@
+.header {
+	cursor: pointer;
+}
+
 .primary {
   color: var(--primary);
   transition: opacity 0.3s;

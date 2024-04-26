@@ -39,7 +39,7 @@ export const CardsProducts = ({ header }: Header): JSX.Element => {
       <Heading
         key={value}
         tag="h3"
-        className={cn(styles.primary, {
+        className={cn(styles.header, {
           [styles.primary]: value == eventValue,
           [styles.ghost]: value != eventValue,
         })}

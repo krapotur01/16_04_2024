@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Content.module.css";
-import { CardsProducts, Feature, Offer, SpecialOffer } from ".";
+import { CardsProducts, Feature, Offer, SpecialOffer, Testimonials } from ".";
 
 export const Content = (): JSX.Element => {
   return (
@@ -10,6 +10,7 @@ export const Content = (): JSX.Element => {
       <CardsProducts header="TRENDING" />
       <SpecialOffer />
       <CardsProducts header="OUR PRODUCTS" />
+      <Testimonials />
     </section>
   );
 };
