@@ -1,13 +1,14 @@
 import { Heading, Paragraph } from "@/app/components";
 import Image from "next/image";
+import styles from "./Testimonial.module.css";
 import сlient from "../../../../../public/Image _client.png";
 import Arrow from "./icon_arrow.svg";
 
 export const Testimonial = () => {
   return (
     <div className="flex flex-row gap-7 items-center justify-center mt-[90px]">
-      <span className="w-[76px] h-[76px] flex items-center justify-center cursor-pointer">
-        <Arrow className="rotate-180 " />
+      <span className={styles.arrow_span}>
+        <Arrow className="rotate-180" />
       </span>
       <div className="flex flex-col relative items-center justify-center w-[816px] h-[312px] bg-[var(--beige)] rounded-xl">
         <Image
@@ -27,8 +28,8 @@ export const Testimonial = () => {
         </Heading>
         <span className="mt-2 text-base text-[var(--grey)]">Co-founder</span>
       </div>
-      <span className="w-[76px] h-[76px] flex items-center justify-center cursor-pointer">
-        <Arrow />
+      <span className={styles.arrow_span}>
+        <Arrow className="hover:fill-[var(--primary)]" />
       </span>
     </div>
   );

@@ -1,0 +1,16 @@
+.arrow_span {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.arrow_span svg {
+  transition: fill 0.5s;
+}
+
+.arrow_span:hover svg {
+  fill: var(--primary);
+}
