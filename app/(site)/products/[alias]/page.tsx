@@ -1,6 +1,6 @@
 import { getPage } from "@/api/page";
 import { getMenu } from "@/api/menu";
-import { Heading } from "@/app/(site)/components";
+import { Heading } from "@/app/components";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

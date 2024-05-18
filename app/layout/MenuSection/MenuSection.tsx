@@ -9,9 +9,15 @@ export const MenuSection = (): JSX.Element => {
         <Categories />
 
         <nav className={styles.nav}>
-          <p className={styles.item}>HOME</p>
-          <p className={styles.item}>SHOP</p>
-          <p className={styles.item}>BLOG</p>
+          <p className={styles.item}>
+            <Link href={`/`}>HOME</Link>
+          </p>
+          <p className={styles.item}>
+            <Link href={`/shop`}>SHOP</Link>
+          </p>
+          <p className={styles.item}>
+            <Link href={`/blog`}>BLOG</Link>
+          </p>
           <p className={styles.item}>
             <Link href={`/about`}>ABOUT</Link>
           </p>

@@ -1,19 +1,25 @@
-"use client";
-
+import type { Metadata } from "next";
 import {
   Header,
   Footer,
   Logo_section,
   MenuSection,
 } from "./layout/index";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "MEBEL",
+  description: "Качественная мебель на любой вкус",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="ru">
       <head>
@@ -36,15 +42,11 @@ export default function GlobalError({
         />
         <link rel="manifest" href="../favicon/site.webmanifest" />
       </head>
-      <body>
+      <body className={inter.className}>
         <Header />
         <Logo_section />
         <MenuSection />
-        <div>
-          <h2>{error.message}</h2>
-          <button onClick={() => reset()}>Try again</button>
-        </div>
-
+        {children}
         <Footer />
       </body>
     </html>

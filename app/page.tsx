@@ -1,4 +1,12 @@
-import { Blogs, CardsProducts, Feature, Hero, Offer, SpecialOffer, Testimonials } from './Content';
+import {
+  Blogs,
+  CardsProducts,
+  Feature,
+  Hero,
+  Offer,
+  SpecialOffer,
+  Testimonials,
+} from "./(site)/Content";
 
 export default function Home() {
   return (
@@ -7,7 +15,7 @@ export default function Home() {
       <Feature />
       <Offer />
       <CardsProducts header="TRENDING" />
-      <CardsProducts header='OUR PRODUCTS' />
+      <CardsProducts header="OUR PRODUCTS" />
       <SpecialOffer />
       <Testimonials />
       <Blogs />

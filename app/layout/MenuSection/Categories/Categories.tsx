@@ -1,6 +1,6 @@
 import styles from "./Categories.module.css";
 import cn from "classnames";
-import { getMenu } from "../../../../../api/menu";
+import { getMenu } from "../../../../api/menu";
 import Menu from "@/public/menu.svg";
 import Link from "next/link";
 import { TopLevelCategory } from "@/interfaces/page.interface";
