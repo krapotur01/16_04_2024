@@ -1,0 +1,22 @@
+.bottom {
+  height: 5.12rem;
+  margin: 0 9.56rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 3.12rem;
+}
+
+.list_item {
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+}

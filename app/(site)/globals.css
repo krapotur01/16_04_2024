@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #86c751;
+  --primary-hover: rgb(106, 160, 70);
+  --black: black;
+  --white: white;
+  --beige: #F8FAFB;
+  --grey: #555555;
+  --grey-light: #e3e3e3;
+  --blue: #00b7f1;
+  --red: #ff6868;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  margin: auto;
+  width: 80vw;
+  max-width: 90rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}

@@ -1,0 +1,17 @@
+.top {
+  margin: 0 153px 50px 153px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.p {
+  width: 318px;
+}

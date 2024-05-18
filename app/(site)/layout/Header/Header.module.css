@@ -1,0 +1,21 @@
+.header {
+  max-width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: var(--primary);
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+}
+
+.link:hover {
+  transition: all 0.2s;
+  color: grey;
+}
