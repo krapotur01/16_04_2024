@@ -8,7 +8,7 @@ export default interface SliderProps {
         name: string;
         profession: string;
     }[];
-    index: number
+    currentIndex: number
     turnLeft: VoidFunction;
     turnRight: VoidFunction;
 };

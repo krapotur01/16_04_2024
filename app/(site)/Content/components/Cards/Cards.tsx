@@ -13,7 +13,7 @@ export const Cards = ({ headerName, getProducts}: GetProducts) => {
 
   const getProductsItem: FurnitureProps = getProducts(headerName);
 
-  const card = Object.values(getProductsItem).map((item) => {
+  const card: React.JSX.Element[] = Object.values(getProductsItem).map((item) => {
       return (
         <div className={styles.card} key={item.name}>
           <Status status={item.status} position="left">

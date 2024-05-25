@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {Slider} from './Slider/Slider';
 import сlient1 from "./img/client1.png";
 import сlient2 from "./img/client2.png";
@@ -54,7 +54,7 @@ export const Testimonial = () => {
 
     return (
         <div className="flex flex-wrap gap-7 items-center justify-center mt-[90px]">
-            <Slider data={testimonial} turnRight={turnRight} turnLeft={turnLeft} index={slideIndex}/>
+            <Slider data={testimonial} turnRight={turnRight} turnLeft={turnLeft} currentIndex={slideIndex}/>
         </div>
     );
 };

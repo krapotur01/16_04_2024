@@ -1,23 +1,35 @@
 .slider {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 51rem;
+    height: 312px;
+    background-color: var(--beige);
+    border-radius: 15px;
 }
 
 .arrow_span {
-  width: 76px;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    width: 76px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .arrow_span svg {
-  transition: fill 0.5s;
+    transition: fill 0.5s;
 }
 
 .arrow_span:hover svg {
-  fill: var(--primary);
+    fill: var(--primary);
 }
