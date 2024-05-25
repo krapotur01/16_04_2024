@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary: #86c751;
-  --primary-hover: rgb(106, 160, 70);
+  --primary: #c7a251;
+  --primary-hover: rgb(155, 160, 70);
   --black: black;
   --white: white;
   --beige: #F8FAFB;

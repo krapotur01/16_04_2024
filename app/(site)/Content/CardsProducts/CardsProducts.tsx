@@ -8,14 +8,15 @@ import { Cards } from "../components";
 import { Header } from "./CardsProducts.props";
 import { headersTrendProducts, getTrendProducts } from "../api/trendsData";
 import { headersOurProducts, getOurProducts } from "../api/ourProductsData";
+import {FurnitureProps} from "@/app/(site)/Content/components/Cards/Cards.props";
 
-export const CardsProducts = ({ header }: Header): JSX.Element => {
+export const CardsProducts = ({ header }: Header) => {
   const [eventValue, setEventValue] = useState<string | null>(
     header == "TRENDING" ? headersTrendProducts[0] : headersOurProducts[0]
   );
 
   let headers: string[] = [];
-  let getProducts: any;
+  let getProducts: (products: (string | null)) => (FurnitureProps[]);
 
   switch (header) {
     case "TRENDING":

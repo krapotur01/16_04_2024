@@ -8,7 +8,7 @@ import styles from "./Cards.module.css";
 import { Icons } from "./Icons_component/Icons";
 import { GetProducts, FurnitureProps } from "./Cards.props";
 
-export const Cards = ({ getProducts, headerName }: GetProducts) => {
+export const Cards = ({ headerName, getProducts}: GetProducts) => {
   useEffect(() => {}, [headerName]);
 
   const getProductsItem: FurnitureProps = getProducts(headerName);

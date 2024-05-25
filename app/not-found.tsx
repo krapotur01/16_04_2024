@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div className="flex gap-5 flex-col grow w-full justify-center items-center">
