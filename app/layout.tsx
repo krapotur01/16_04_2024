@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import {
   Header,
@@ -7,6 +8,7 @@ import {
 } from "./layout/index";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +50,7 @@ export default function RootLayout({
         <MenuSection />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
