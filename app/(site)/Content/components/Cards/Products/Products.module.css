@@ -1,0 +1,14 @@
+.card {
+  width: 270px;
+  height: 387px;
+  position: relative;
+}
+
+.icons {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card:hover .icons {
+  opacity: 1;
+}

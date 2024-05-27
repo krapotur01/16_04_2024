@@ -231,7 +231,7 @@ export const bestSellersTrend: FurnitureProps[] = [
   },
 ];
 
-export const getTrendProducts = (products: string | null) => {
+export const getTrendProducts = (products: string) => {
   switch (products) {
     case "Top Products":
       return topProductsTrend;

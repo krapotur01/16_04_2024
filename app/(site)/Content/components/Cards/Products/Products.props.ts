@@ -8,7 +8,6 @@ export interface FurnitureProps {
   rating: number;
 }
 
-export interface GetProducts {
-  headers: string[];
-  getProducts: (product: string ) => FurnitureProps[];
+export interface ProductsProps {
+  products: FurnitureProps[];
 }

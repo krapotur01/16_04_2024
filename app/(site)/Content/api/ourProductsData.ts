@@ -307,7 +307,7 @@ export const todaysDeals: FurnitureProps[] = [
   },
 ];
 
-export const getOurProducts = (products: string | null) => {
+export const getOurProducts = (products: string) => {
   switch (products) {
     case "All Products":
       return allProducts;

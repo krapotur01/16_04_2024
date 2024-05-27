@@ -1,51 +1,38 @@
-"use client";
+'use client'
 
-import React, { useEffect } from "react";
-import Image from "next/image";
-import { Heading, Rating } from "@/app/components";
-import { Status, Price } from "..";
-import styles from "./Cards.module.css";
-import { Icons } from "./Icons_component/Icons";
-import { GetProducts, FurnitureProps } from "./Cards.props";
+import React, {MouseEventHandler, useState} from "react";
+import {FurnitureProps, GetProducts} from "./Cards.props";
+import {Heading} from "@/app/components";
+import {Products} from "@/app/(site)/Content/components/Cards/Products/Products";
+import cn from "classnames";
+import styles from "@/app/(site)/Content/CardsProducts/Headers.module.css";
 
-export const Cards = ({ headerName, getProducts}: GetProducts) => {
-  useEffect(() => {}, [headerName]);
+export const Cards = ({headers, getProducts}: GetProducts) => {
+    const [eventValue, setEventValue] = useState<string>(headers[0]);
 
-  const getProductsItem: FurnitureProps = getProducts(headerName);
+    const onClick: MouseEventHandler<HTMLHeadingElement> = (e) => {
+        const value = (e.target as HTMLElement).textContent;
+        value && setEventValue(value);
+    };
 
-  const card: React.JSX.Element[] = Object.values(getProductsItem).map((item) => {
-      return (
-        <div className={styles.card} key={item.name}>
-          <Status status={item.status} position="left">
-            {item.status}
-          </Status>
-          <Icons className={styles.icons} />
-          <Image
-            src={item.pic}
-            alt={item.name}
-            width={269}
-            height={288}
-            className="w-[269px] h-[288px]"
-          />
-          <span className="mt-4 text-gray-400 block">{item.product}</span>
-          <Heading tag="h5" className="mt-2">
-            {item.name}
-          </Heading>
-
-          <div className="flex flex-row justify-between mt-2">
-            <div className="flex gap-2">
-              <Price price="discount">{item.price_discount}</Price>
-              <Price price="ghost">{item.price}</Price>
-            </div>
-            <Rating rating={item.rating} isEditable />
-          </div>
+    const header = headers.map((value) => (
+        <div key={value} className="flex flex-wrap items-center gap-x-20 gap-y-6 mt-11 justify-center">
+            <Heading tag="h3"
+                     className={cn(styles.header, {
+                         [styles.primary]: value == eventValue,
+                         [styles.ghost]: value != eventValue,
+                     })}
+                     onClick={(e) => onClick(e)}
+            >{value}</Heading>
         </div>
-      );
-  });
+    ))
 
-  return (
-    <div className="flex gap-x-[30px] gap-y-[45px] justify-center flex-wrap mt-[70px]">
-      {card}
-    </div>
-  );
+    const productItem: FurnitureProps[] = getProducts(eventValue);
+
+    return (
+        <div className="flex gap-x-[30px] gap-y-[45px] justify-center flex-wrap mt-[70px] relative">
+            {header}
+            <Products products={productItem}/>
+        </div>
+    );
 };
