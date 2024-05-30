@@ -11,8 +11,3 @@ export interface FurnitureProps {
 export interface ProductsProps {
   products: FurnitureProps[];
 }
-
-export interface GetProducts {
-  headers: string[];
-  getProducts: (product: string ) => FurnitureProps[];
-}
