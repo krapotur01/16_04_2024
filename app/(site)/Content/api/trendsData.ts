@@ -1,4 +1,4 @@
-import { FurnitureProps } from "../components/Cards/Cards.props";
+import { FurnitureProps } from "../CardsProducts/Cards/Cards.props";
 
 export const headersTrendProducts: string[] = [
   "Top Products",
@@ -79,6 +79,24 @@ export const topProductsTrend: FurnitureProps[] = [
     price: "$150",
     rating: 4,
   },
+  {
+    status: "New",
+    pic: "/chairs_trend/Minimal_LCD.png",
+    product: "CHAIR",
+    name: "Miimal LCD chair",
+    price_discount: "$180",
+    price: "$250",
+    rating: 3,
+  },
+  {
+    status: "Sale",
+    pic: "/chairs_trend/Plastic_dining_chair.png",
+    product: "CHAIR",
+    name: "Plast dining chair",
+    price_discount: "$160",
+    price: "$250",
+    rating: 5,
+  },
 ];
 
 export const newArrivalsTrend: FurnitureProps[] = [
@@ -149,7 +167,7 @@ export const newArrivalsTrend: FurnitureProps[] = [
     status: "New",
     pic: "/our_products/Delicia_3_Piece_Living_Room.png",
     product: "CHAIR",
-    name: "Delicia 3 Piece Living Room",
+    name: "Deli 3 Piece Living Room",
     price_discount: "$120",
     price: "$150",
     rating: 4,
@@ -188,7 +206,7 @@ export const bestSellersTrend: FurnitureProps[] = [
     status: "Sale",
     pic: "/chairs_trend/Buskbo_armchair.png",
     product: "CHAIR",
-    name: "Buskbo armchair ",
+    name: "Bush armchair ",
     price_discount: "$130",
     price: "$150",
     rating: 4,

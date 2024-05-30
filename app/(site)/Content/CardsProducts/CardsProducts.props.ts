@@ -1,3 +1,3 @@
-export interface Header {
+export interface HeaderProps {
   header: "TRENDING" | "OUR PRODUCTS";
 }

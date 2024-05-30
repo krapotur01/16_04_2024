@@ -2,33 +2,33 @@
 
 import React, {useState} from 'react';
 import {Slider} from './Slider/Slider';
-import сlient1 from "./img/client1.png";
-import сlient2 from "./img/client2.png";
-import сlient3 from "./img/client3.png";
-import сlient4 from "./img/client4.png";
+import Client1 from "./img/client1.png";
+import Client2 from "./img/client2.png";
+import Client3 from "./img/client3.png";
+import Client4 from "./img/client4.png";
 
 
 export const Testimonial = () => {
     const testimonial = [
         {
-            id: 1, src: сlient1, comment: 'I like Furniking.com and as compared to other company it`s polices and\n' +
+            id: 1, src: Client1, comment: 'I like Furniking.com and as compared to other company it`s polices and\n' +
                 '          customers support is very good easy to reach., also many time they\n' +
                 '          unable to delivered. The ultricies are pregnant while the quis is\n' +
                 '          suspended. Risus commodo viverra maecenas accumsan lacus vel\n' +
                 '          facilisist amet.', name: 'Angelina Joly', profession: 'Co-founder'
         },
         {
-            id: 2, src: сlient2, comment: 'The ultricies are pregnant while the quis is\n' +
+            id: 2, src: Client2, comment: 'The ultricies are pregnant while the quis is\n' +
                 '          suspended. Risus commodo viverra maecenas accumsan lacus vel\n' +
                 '          facilisist amet.', name: 'Akula White', profession: 'Founder'
         },
         {
-            id: 3, src: сlient3, comment: 'I like Furniking.com and as compared to other company it`s polices and\n' +
+            id: 3, src: Client3, comment: 'I like Furniking.com and as compared to other company it`s polices and\n' +
                 '          customers support is very good easy to reach., also many time they\n' +
                 '          unable to delivered.', name: 'Brednden Pit', profession: 'Akter'
         },
         {
-            id: 4, src: сlient4, comment: 'Risus commodo viverra maecenas accumsan lacus vel\n' +
+            id: 4, src: Client4, comment: 'Risus commodo viverra maecenas accumsan lacus vel\n' +
                 '          facilisist amet.', name: 'Ivan Nedugin', profession: 'Joker'
         },
     ]

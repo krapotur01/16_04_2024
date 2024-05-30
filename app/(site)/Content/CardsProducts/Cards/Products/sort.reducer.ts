@@ -22,7 +22,7 @@ export const sortReducer = (state: sortReducerState, action: SortAction) => {
         case SortEnum.Price:
             return {
                 sort: SortEnum.Price,
-                products: state.products.sort((a, b) => a.price > b.price ? -1 : 1),
+                products: state.products.sort((a, b) => a.price_discount > b.price_discount ? -1 : 1),
             };
         default:
             throw new Error('Не верный тип сортировки!');
