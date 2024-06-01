@@ -12,6 +12,8 @@
     position: relative;
     align-items: center;
     justify-content: center;
+    min-height: 320px;
+    padding: 10px 20px;
     height: auto;
     background-color: var(--beige);
     border-radius: 15px;
