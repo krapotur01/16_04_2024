@@ -52,3 +52,9 @@
     left: 36%;
   }
 }
+
+@media (max-width: 530px) {
+  .hero {
+   display: none;
+  }
+}

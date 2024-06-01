@@ -1,8 +1,19 @@
 .card {
   padding-top: 15.55rem;
   padding-left: 2.88rem;
-  width: 35.56rem;
+  width: 29.47vw;
+  min-width: 500px;
   height: 28.43rem;
+  border-radius: 20px;
+}
+
+.title {
+  width: 90%;
+  overflow: hidden;
+  font-size: 39px;
+  font-weight: bold;
+  padding-top: 10px;
+  color: var(--white);
 }
 
 .furniture {
@@ -19,4 +30,16 @@
 
 .chair {
   background-image: url("../../../../../public/blogs/chair.png");
+}
+
+@media (max-width: 720px) {
+  .card {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    min-width: 380px;
+    height: auto;
+  }
+  .title {
+    font-size: 32px;
+  }
 }

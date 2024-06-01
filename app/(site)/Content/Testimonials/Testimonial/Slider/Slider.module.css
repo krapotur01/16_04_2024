@@ -3,6 +3,7 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    width: 80%;
 }
 
 .slide {
@@ -11,11 +12,18 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 42vw;
-    min-width: 610px;
-    height: 312px;
+    height: auto;
     background-color: var(--beige);
     border-radius: 15px;
+}
+
+.title {
+    margin-top: 18px;
+}
+
+.paragraph {
+    width: 90%;
+    text-align: center;
 }
 
 .arrow_span {
@@ -36,9 +44,12 @@
 }
 
 @media (max-width: 600px) {
-
+    .slide {
+        font-size: 15px;
+        width: 80%;
+        padding: 10px;
+    }
     .arrow_span {
         display: none;
     }
-
 }

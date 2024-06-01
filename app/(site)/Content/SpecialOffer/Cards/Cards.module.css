@@ -16,3 +16,9 @@
 .card_second {
   background-image: url(./pic/second.png);
 }
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+
+}

@@ -1,3 +1,11 @@
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+  margin-top: 70px;
+}
+
 .offer_main {
   background-image: url(./pic/Modern_Furniture_Collections.png);
   width: 41.87rem;
@@ -8,7 +16,7 @@
   flex-direction: column;
   padding: 49px 0 0 31px;
   gap: 13px;
-  min-width: 30rem;
+  min-width: 480px;
   min-height: 247px;
 }
 
@@ -32,8 +40,16 @@
 }
 
 @media (max-width: 1170px) {
-  .offer_main {
-    width: 30rem;
+  .offers {
+    flex-direction: column;
   }
+  .offer_main {
+    width: 480px;
+  }
+}
 
+@media (max-width: 450px) {
+  .offer {
+    min-width: 300px;
+  }
 }

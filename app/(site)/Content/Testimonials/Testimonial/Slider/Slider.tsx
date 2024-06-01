@@ -27,8 +27,8 @@ export const Slider = ({data, currentIndex, turnLeft, turnRight}: SliderProps) =
                     height={88}
                     className="absolute top-[-46px]"
                 />
-                <Paragraph size="m" className="w-[36rem] text-inherit text-center">{item.comment}</Paragraph>
-                <Heading tag="h3" className="mt-8 text-inherit]">{item.name}</Heading>
+                <Paragraph size="m" className={styles.paragraph}>{item.comment}</Paragraph>
+                <Heading tag="h3" className={styles.title}>{item.name}</Heading>
                 <span className="mt-2 text-base text-[var(--grey)]">{item.profession}</span>
             </motion.div>
         }

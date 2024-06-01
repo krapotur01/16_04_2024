@@ -45,7 +45,7 @@ export const Cards = () => {
           </div>
           <span className="text-[var(--white)] text-sm">{i.date}</span>
         </div>
-        <h2 className="w-[25rem] text-[var(--white)] text-[39px] leading-[47px] font-bold pt-4">
+        <h2 className={styles.title}>
           {i.heading}
         </h2>
         <span className="block text-[var(--white)] text-sm mt-6">Read more</span>
