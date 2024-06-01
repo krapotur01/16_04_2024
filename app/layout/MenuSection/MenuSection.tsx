@@ -2,30 +2,25 @@ import styles from "./MenuSection.module.css";
 import { Categories } from "./Categories/Categories";
 import Link from 'next/link';
 
-export const MenuSection = (): JSX.Element => {
+export const MenuSection = () => {
+  const menu = [
+    {href: "/", label: "Главная" },
+    {href: '/about', label: 'О нас'},
+    {href: '/contacts', label: 'Контакты'},
+    {href: '/shop', label: 'Корзина'},
+  ]
+
   return (
     <section className={styles.section}>
       <div className={styles.nav_block}>
         <Categories />
-
-        <nav className={styles.nav}>
-          <p className={styles.item}>
-            <Link href={`/`}>HOME</Link>
-          </p>
-          <p className={styles.item}>
-            <Link href={`/shop`}>SHOP</Link>
-          </p>
-          <p className={styles.item}>
-            <Link href={`/blog`}>BLOG</Link>
-          </p>
-          <p className={styles.item}>
-            <Link href={`/about`}>ABOUT</Link>
-          </p>
-          <p className={styles.item}>
-            {" "}
-            <Link href={`/contacts`}>CONTACT US</Link>
-          </p>
-        </nav>
+        {menu.map((item) => (
+            <nav key={item.label} className={styles.nav}>
+              <p className={styles.item}>
+                <Link href={item.href}>{item.label}</Link>
+              </p>
+            </nav>
+        ))}
       </div>
     </section>
   );

@@ -1,14 +1,57 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+    justify-content: center;
+    position: relative;
+}
+
+.title {
+    margin-top: 8px;
+    max-width: 269px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.price {
+    font-size: 18px;
+}
+
 .card {
-  width: 270px;
-  height: 387px;
-  position: relative;
+    max-height: 387px;
+    position: relative;
 }
 
 .icons {
-  opacity: 0;
-  transition: opacity 0.5s;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .card:hover .icons {
-  opacity: 1;
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .cards {
+        gap: 25px 10px;
+    }
+    .image {
+        width: 200px;
+        height: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .image {
+        width: 180px;
+        height: auto;
+    }
+    .title {
+        max-width: 180px;
+        margin-top: 5px;
+        font-size: 16px;
+    }
+    .price {
+        font-size: 16px;
+    }
 }

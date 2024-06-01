@@ -1,7 +1,14 @@
-.span {
-  color: var(--primary);
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 13px;
-  padding: 5px 0 0 0;
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
+.span {
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    padding: 5px 0 0 0;
+}
+

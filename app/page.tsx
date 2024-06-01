@@ -7,10 +7,11 @@ import {
   SpecialOffer,
   Testimonials,
 } from "./(site)/Content";
+import styles from './layout/layout.module.css'
 
 export default function Home() {
   return (
-    <main className="w-full grow flex flex-col items-center">
+    <main className={styles.content}>
       <Hero />
       <Feature />
       <Offer />

@@ -68,5 +68,5 @@ export const Cards = () => {
     );
   });
 
-  return <div className="flex flex-wrap w-full justify-center gap-8 mt-14">{card}</div>;
+  return <div className="flex flex-wrap justify-center gap-8 mt-14">{card}</div>;
 };

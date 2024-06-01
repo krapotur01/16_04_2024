@@ -40,7 +40,7 @@ export const CardsProducts = ({header}: HeaderProps) => {
     }
 
     return (
-        <section className="flex flex-col items-center mt-28 w-full">
+        <section className="flex flex-col items-center mt-28">
             <Heading tag="h2">{header}</Heading>
             <HeadersProducts headers={getHeaders(header)} getProducts={getProducts}/>
             <Cards products={products}/>

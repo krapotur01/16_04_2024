@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import styles from "./Feature.module.css";
 import { Heading } from "@/app/components";
 
 export const Feature = () => {
@@ -47,7 +48,7 @@ export const Feature = () => {
   });
 
   return (
-    <div className="flex flex-wrap justify-center w-full gap-x-20 gap-y-6 mt-16">
+    <div className={styles.feature}>
       {feature}
     </div>
   );

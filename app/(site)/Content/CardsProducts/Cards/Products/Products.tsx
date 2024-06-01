@@ -23,7 +23,7 @@ export const Products = ({products}: ProductsProps) => {
     }
 
     return (
-            <div className="flex gap-x-[30px] gap-y-[45px] justify-center flex-wrap relative">
+            <div className={styles.cards}>
                 <Sort sort={sort} setSort={setSort}/>
                 {sortedProducts.map((item) => {
                     return (
@@ -37,17 +37,17 @@ export const Products = ({products}: ProductsProps) => {
                                 alt={item.name}
                                 width={269}
                                 height={288}
-                                className="w-[269px] h-[288px]"
+                                className={styles.image}
                             />
                             <span className="mt-4 text-gray-400 block">{item.product}</span>
-                            <Heading tag="h5" className="mt-2">
+                            <Heading tag="h5" className={styles.title}>
                                 {item.name}
                             </Heading>
 
-                            <div className="flex flex-row justify-between mt-2">
+                            <div className="flex flex-row items-center justify-between mt-2">
                                 <div className="flex gap-2">
-                                    <Price price="discount">{item.price_discount}</Price>
-                                    <Price price="ghost">{item.price}</Price>
+                                    <Price price="discount" className={styles.price}>{item.price_discount}</Price>
+                                    <Price price="ghost" className={styles.price}>{item.price}</Price>
                                 </div>
                                 <Rating rating={item.rating} isEditable/>
                             </div>

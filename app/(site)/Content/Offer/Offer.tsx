@@ -5,7 +5,7 @@ import { Heading } from "@/app/components";
 
 export const Offer = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-[19px] mx-auto mt-[70px] w-full">
+    <div className="flex flex-wrap justify-center gap-[19px] mt-[70px]">
       <div className={cn(styles.offer_main, styles.offer)}>
         <Heading tag="h4" className="font-medium flex">
           Modern Furniture Collections

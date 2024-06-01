@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import {DetailedHTMLProps, HTMLAttributes, ReactNode} from "react";
 
-export interface PriceProps {
-  children: ReactNode;
-  price?: "discount" | "ghost";
+export interface PriceProps extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+    children: ReactNode;
+    price?: "discount" | "ghost";
 }

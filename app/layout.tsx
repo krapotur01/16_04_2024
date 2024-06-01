@@ -3,7 +3,9 @@ import type {Metadata} from "next";
 import { Header, Logo_section, MenuSection, Footer } from "./layout/index";
 import {Inter} from "next/font/google";
 import "./globals.css";
+import styles from "./layout/layout.module.css";
 import {SpeedInsights} from '@vercel/speed-insights/next';
+import cn from "classnames";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -38,12 +40,12 @@ export default function RootLayout({
             />
             <title>Мебель</title>
         </head>
-        <body className={inter.className}>
-        <Header/>
-        <Logo_section/>
-        <MenuSection/>
+        <body className={cn(inter.className, styles.layout)}>
+        <Header />
+        <Logo_section />
+        <MenuSection />
         {children}
-        <Footer/>
+        <Footer />
         <SpeedInsights/>
         </body>
         </html>

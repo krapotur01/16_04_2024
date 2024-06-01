@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./Offers.module.css";
-import { OffersProps } from "./Offers.props"; // типизируем входящий объект
+import { OffersProps } from "./Offers.props";
+import cn from "classnames"; // типизируем входящий объект
 
-export const Offers = (offers: OffersProps) => {
+export const Offers = ({offer, className}: OffersProps) => {
   // приводим объект в массив и итерируемся по нему
-  const item = Object.values(offers).map((i) => {
+  const item = Object.values(offer).map((i) => {
     return (
       <div
         key={i.name}
@@ -26,5 +27,5 @@ export const Offers = (offers: OffersProps) => {
     );
   });
 
-  return <div className="flex flex-col gap-5">{item}</div>;
+  return <div className={cn(styles.offer, className)}>{item}</div>;
 };

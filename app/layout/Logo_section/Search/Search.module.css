@@ -11,17 +11,28 @@
 	border-right: 1px solid var(--grey-light);
 	padding: 5px 5px 5px 10px;
 	outline: none;
-	width: 25rem;
+	width: 21vw;
+	max-width: 400px;
+	min-width: 200px;
 }
 
 .select {
 	border: 2px solid var(--primary);
 	border-left: 1px solid var(--grey-light);
 	border-right: none;
+	padding: 0 10px;
 	outline: none;
-	width: 123px;
+	max-width: 123px;
 	color: var(--grey);
 	font-size: 14px;
+
+	appearance: none;
+	background: url(icon_arrow.svg) no-repeat right;
+	background-position-x: calc(100% - 8px);
+}
+
+.option {
+	margin-right: 10px;
 }
 
 .button {

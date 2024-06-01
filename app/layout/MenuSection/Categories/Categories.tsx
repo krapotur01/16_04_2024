@@ -1,52 +1,37 @@
 import styles from "./Categories.module.css";
 import cn from "classnames";
-import { getMenu } from "../../../../api/menu";
-import Menu from "@/public/menu.svg";
+import MenuIcon from "@/public/menu.svg";
 import Link from "next/link";
-import { TopLevelCategory } from "@/interfaces/page.interface";
-import { FirstLevelMenuItem } from "@/interfaces/menu.interface";
 
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  { route: "courses", name: "Курсы", id: TopLevelCategory.Courses },
-  { route: "services", name: "Сервис", id: TopLevelCategory.Services },
-  { route: "books", name: "Книги", id: TopLevelCategory.Books },
-  { route: "products", name: "Продукты", id: TopLevelCategory.Products },
+const firstLevelMenu = [
+  { route: "tables", name: "Столы",},
+  { route: "chairs", name: "Стулья",},
+  { route: "armchairs", name: "Кресла",},
+  { route: "cabinets", name: "Шкафы",},
 ];
 
 export async function Categories() {
-  const menu = await getMenu(0);
 
-  const buildCategories = () => {
-    return (
-      <>
-        {firstLevelMenu.map((m) => (
-          <li key={m.route} className={styles.list_item}>
-            <Link href={`/${m.route}`}>
-              <div
-                className={cn(styles.firstLevel, {
-                  [styles.firstLevelActive]: m.id == 0,
-                })}
-              >
-                <span>{m.name}</span>
-              </div>
+
+        const menu = firstLevelMenu.map((menu) => (
+          <li key={menu.route} className={styles.list_item}>
+            <Link href={`/${menu.route}`}>
+                <span>{menu.name}</span>
             </Link>
-            {/* {m.id == 0 && buildSecondLevel(m)} */}
           </li>
-        ))}
-      </>
-    );
-  };
+        ))
+
 
   return (
     <div className={styles.menu}>
-      <Menu />
+      <MenuIcon />
       <p className={styles.paragraph}>ALL COLLECTIONS</p>
       <ul
         className={cn(styles.list, {
           [styles.list_hidden]: !Object.values(menu[2]),
         })}
       >
-        {buildCategories()}
+        {menu}
       </ul>
     </div>
   );

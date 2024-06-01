@@ -30,3 +30,10 @@
   line-height: 26px;
   color: var(--grey);
 }
+
+@media (max-width: 1170px) {
+  .offer_main {
+    width: 30rem;
+  }
+
+}

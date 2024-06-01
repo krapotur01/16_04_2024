@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 import Slash from "./slash.svg";
 import Arrow from "./arrow.svg";
 
-export const Header = (): JSX.Element => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <span className="pl-36 font-normal text-base">

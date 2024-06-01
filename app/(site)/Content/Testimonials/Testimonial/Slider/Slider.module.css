@@ -11,7 +11,8 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 51rem;
+    width: 42vw;
+    min-width: 610px;
     height: 312px;
     background-color: var(--beige);
     border-radius: 15px;
@@ -32,4 +33,12 @@
 
 .arrow_span:hover svg {
     fill: var(--primary);
+}
+
+@media (max-width: 600px) {
+
+    .arrow_span {
+        display: none;
+    }
+
 }

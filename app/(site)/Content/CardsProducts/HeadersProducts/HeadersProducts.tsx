@@ -18,7 +18,7 @@ export const HeadersProducts = ({headers, getProducts}: HeadersProps) => {
 
 
     return (
-        <div className="flex flex-wrap items-center gap-x-[66px] gap-y-3 mt-11 justify-center">
+        <div className={styles.container}>
             {headers.map((value) => (
                 <Heading key={value}
                          tag="h3"

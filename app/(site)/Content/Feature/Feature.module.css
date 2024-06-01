@@ -1,0 +1,12 @@
+.feature {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px 80px;
+    margin-top: 50px;
+}
+
+@media (max-width: 1200px) {
+    .feature {
+        grid-template-columns: auto auto;
+    }
+}

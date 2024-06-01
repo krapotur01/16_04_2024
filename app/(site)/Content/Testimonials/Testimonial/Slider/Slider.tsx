@@ -10,6 +10,8 @@ export const Slider = ({data, currentIndex, turnLeft, turnRight}: SliderProps) =
     const element = Object.values(data).map((item, index) => {
         if (item && index === currentIndex) {
             return <motion.div key={item.id} className={styles.slide}
+                               onTouchEndCapture={turnLeft}
+                               onTouchStartCapture={turnRight}
                                initial={{opacity: 0, background: 'var(--primary-hover)'}}
                                whileInView={{opacity: 1, background: 'var(--beige)'}}
                                viewport={{once: true}}

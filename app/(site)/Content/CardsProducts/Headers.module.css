@@ -1,3 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 5vw;
+  margin-top: 50px;
+}
+
 .header {
 	cursor: pointer;
 }
@@ -19,4 +28,10 @@
 .ghost:hover {
   color: var(--primary);
   opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .header {
+    font-size: 16px;
+  }
 }
