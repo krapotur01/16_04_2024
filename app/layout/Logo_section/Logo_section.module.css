@@ -8,7 +8,7 @@
 
 @media (min-width: 720px) and (max-width: 1000px) {
   .logo_section  {
-    gap: 0 6vw;
+    gap: 10px 6vw;
   }
 }
 

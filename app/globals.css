@@ -9,7 +9,7 @@
   --white: white;
   --beige: #F8FAFB;
   --grey: #555555;
-  --grey-light: #e3e3e3;
+  --grey-light: #888181;
   --blue: #00b7f1;
   --red: #ff6868;
 }
@@ -17,10 +17,4 @@
 html,
 body {
   margin: auto;
-  max-width: 1440px;
-  min-height: 100vh;
-}
-
-::-webkit-scrollbar {
-  width: 15px;
 }

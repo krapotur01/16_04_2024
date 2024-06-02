@@ -1,60 +1,104 @@
 .hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f1faff;
-  padding: 30px 52px;
-  width: 47vw;
-  min-width: 500px;
-  margin-top: 11px;
-  margin-left: 408px;
-  margin-right: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1faff;
+    padding: 30px 52px;
+    width: 47vw;
+    min-width: 500px;
+    margin: 11px auto 0 408px;
 }
 
 .content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .header {
-  width: 318px;
-  margin-top: 6px;
-  color: var(--black);
+    width: 318px;
+    margin-top: 6px;
+    color: var(--black);
+}
+
+.paragraphOffer {
+    font-size: 27px;
+    line-height: 26px;
+    font-weight: 600;
+    color: var(--grey-light);
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .line {
-  position: absolute;
-  z-index: 5;
-  top: 115px;
-  right: 10px;
+    position: absolute;
+    z-index: 5;
+    top: 115px;
+    left: 45px;
 }
 
 .p {
-  font-size: 22px;
-  line-height: 26px;
-  color: var(--primary);
+    font-size: 22px;
+    line-height: 26px;
+    color: var(--primary);
 }
 
 .furnitureSVG {
-  z-index: 0;
-  position: absolute;
-  left: 52%;
+    z-index: 0;
+    position: absolute;
+    left: 52%;
+    top: 10px;
+    background-image: url(../../../../public/Furniture.svg);
+    width: 374px;
+    height: 374px;
 }
 
 @media (max-width: 1050px) {
-  .hero {
-    margin: 11px auto 0;
-    width: 70vw;
-  }
+    .hero {
+        margin: 11px auto 0;
+        width: 90%;
+    }
 
-  .furnitureSVG {
-    left: 36%;
-  }
+    .furnitureSVG {
+        left: 40%;
+    }
 }
 
-@media (max-width: 530px) {
-  .hero {
-   display: none;
-  }
+@media (max-width: 620px) {
+    .hero {
+        width: 100%;
+        min-width: 0;
+        padding: 20px 0 20px 20px;
+    }
+
+    .header {
+        width: 240px;
+    }
+
+    .line {
+        position: absolute;
+        z-index: 5;
+        top: 90px;
+    }
+
+    .p {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .furnitureSVG {
+        left: 45%;
+        top: 10px;
+        background-image: url(../../../../public/Furniture.svg);
+        background-size: 200px 200px;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 200px;
+    }
+
+    .paragraphOffer {
+        font-size: 18px;
+        line-height: 20px;
+    }
 }

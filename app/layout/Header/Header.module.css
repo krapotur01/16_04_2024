@@ -8,6 +8,18 @@
   color: white;
 }
 
+.description {
+  padding-left: 153px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.auth {
+  display: flex;
+  gap: 10px;
+  margin-right: 153px;
+}
+
 .link {
   text-decoration: none;
   cursor: pointer;
@@ -17,4 +29,17 @@
 .link:hover {
   transition: all 0.2s;
   color: grey;
+}
+
+@media (max-width: 710px) {
+  .header {
+    display: flex;
+    justify-content: center;
+  }
+  .description {
+    display: none;
+  }
+  .auth {
+    margin: 0;
+  }
 }

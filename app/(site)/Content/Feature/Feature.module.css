@@ -10,3 +10,10 @@
         grid-template-columns: auto auto;
     }
 }
+
+@media (max-width: 600px) {
+    .feature {
+        display: flex;
+        flex-direction: column;
+    }
+}

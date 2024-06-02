@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import line from "@/public/hero_header_line.png";
-import Furniture from "@/public/Furniture.svg";
 import {Button, Heading} from "@/app/components";
 import {Offers} from "./Offers/Offers";
 import {offer} from "../api/offerData"; // передаем внешние данные в компонент
@@ -11,7 +10,7 @@ import {Pagination} from "./Pagination/Pagination";
 export const Hero = () => {
     return (
         <div className={styles.hero}>
-            <Furniture className={styles.furnitureSVG}/>
+            <div className={styles.furnitureSVG}/>
             <div className={styles.content}>
                 <div className="w-80 relative">
                     <p className={styles.p}>TOP COLLECTIONS 2024</p>
@@ -25,7 +24,7 @@ export const Hero = () => {
                         width={177}
                         height={11}
                     />
-                    <p className="text-herop font-medium text-gray-500 mt-7 mb-9">
+                    <p className={styles.paragraphOffer}>
                         Get 50% off all products
                     </p>
                     <Button

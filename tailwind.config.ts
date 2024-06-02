@@ -20,7 +20,6 @@ const config: Config = {
       ss: ["12px", "15px"],
       sm: ["14px", "20px"],
       base: ["16px", "20px"],
-      herop: ["27px", "26px"],
       xl: ["24px", "32px"],
     },
   },
