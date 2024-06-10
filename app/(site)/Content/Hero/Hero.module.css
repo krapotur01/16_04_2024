@@ -25,7 +25,7 @@
 .paragraphOffer {
     font-size: 27px;
     line-height: 26px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--grey-light);
     margin-top: 20px;
     margin-bottom: 10px;
@@ -47,7 +47,7 @@
 .furnitureSVG {
     z-index: 0;
     position: absolute;
-    left: 52%;
+    left: 42%;
     top: 10px;
     background-image: url(../../../../public/Furniture.svg);
     width: 374px;

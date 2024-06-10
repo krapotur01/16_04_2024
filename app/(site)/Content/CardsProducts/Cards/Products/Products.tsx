@@ -25,9 +25,9 @@ export const Products = ({products}: ProductsProps) => {
     return (
             <div className={styles.cards}>
                 <Sort sort={sort} setSort={setSort}/>
-                {sortedProducts.map((item) => {
+                {sortedProducts.map((item, index) => {
                     return (
-                        <div className={styles.card} key={item.name}>
+                        <div className={styles.card} key={index}>
                             <Status status={item.status} position="left">
                                 {item.status}
                             </Status>

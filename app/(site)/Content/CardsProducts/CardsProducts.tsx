@@ -27,7 +27,7 @@ export const CardsProducts = ({header}: HeaderProps) => {
         return headers;
     }
 
-    const getProducts = (currentHeader: string): FurnitureProps[] => {
+    const getProducts = (currentHeader:  string): FurnitureProps[] => {
         switch (header) {
             case "TRENDING":
                 setProducts(getTrendProducts(currentHeader));

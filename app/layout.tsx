@@ -1,6 +1,6 @@
 import React from "react";
 import type {Metadata} from "next";
-import { Header, Logo_section, MenuSection, Footer } from "./layout/index";
+import {Header, Logo_section, MenuSection, Footer} from "./layout/index";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import styles from "./layout/layout.module.css";
@@ -13,11 +13,7 @@ export const metadata: Metadata = {
     description: "Качественная мебель на любой вкус",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="ru">
         <head>
@@ -41,11 +37,11 @@ export default function RootLayout({
             <title>Мебель</title>
         </head>
         <body className={cn(inter.className, styles.layout)}>
-        <Header />
-        <Logo_section />
-        <MenuSection />
-        {children}
-        <Footer />
+        <Header/>
+        <Logo_section/>
+        <MenuSection/>
+            {children}
+        <Footer/>
         <SpeedInsights/>
         </body>
         </html>

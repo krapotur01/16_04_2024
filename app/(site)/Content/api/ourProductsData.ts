@@ -4,7 +4,7 @@ export const headersOurProducts: string[] = [
   "All Products",
   "Best Sellers",
   "New Arrivals",
-  "Todays Deals",
+  "Today Deals",
 ];
 
 export const allProducts: FurnitureProps[] = [
@@ -232,7 +232,7 @@ export const newArrivals: FurnitureProps[] = [
   },
 ];
 
-export const todaysDeals: FurnitureProps[] = [
+export const todayDeals: FurnitureProps[] = [
   {
     status: "New",
     pic: "/chairs_trend/Minimal_LCD.png",
@@ -316,7 +316,7 @@ export const getOurProducts = (products: string) => {
     case "New Arrivals":
       return newArrivals;
     case "Todays Deals":
-      return todaysDeals;
+      return todayDeals;
     default:
       return allProducts;
   }

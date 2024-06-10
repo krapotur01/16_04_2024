@@ -6,7 +6,7 @@ export const headersTrendProducts: string[] = [
   "Best Sellers",
 ];
 
-export const topProductsTrend: FurnitureProps[] = [
+const topProductsTrend: FurnitureProps[] = [
   {
     status: "New",
     pic: "/chairs_trend/Minimal_LCD.png",
@@ -99,7 +99,7 @@ export const topProductsTrend: FurnitureProps[] = [
   },
 ];
 
-export const newArrivalsTrend: FurnitureProps[] = [
+const newArrivalsTrend: FurnitureProps[] = [
   {
     status: "Sale",
     pic: "/our_products/Minimal_LCD_chair.png",
@@ -174,7 +174,7 @@ export const newArrivalsTrend: FurnitureProps[] = [
   },
 ];
 
-export const bestSellersTrend: FurnitureProps[] = [
+const bestSellersTrend: FurnitureProps[] = [
   {
     status: "New",
     pic: "/chairs_trend/Minimal_LCD.png",
@@ -249,15 +249,22 @@ export const bestSellersTrend: FurnitureProps[] = [
   },
 ];
 
+const allProducts = topProductsTrend.concat(bestSellersTrend, bestSellersTrend);
+
+
 export const getTrendProducts = (products: string) => {
-  switch (products) {
-    case "Top Products":
-      return topProductsTrend;
-    case "New Arrivals":
-      return newArrivalsTrend;
-    case "Best Sellers":
-      return bestSellersTrend;
-    default:
-      return topProductsTrend;
+  if (products === 'All products') {
+    return allProducts;
+  } else {
+    switch (products) {
+      case "Top Products":
+        return topProductsTrend;
+      case "New Arrivals":
+        return newArrivalsTrend;
+      case "Best Sellers":
+        return bestSellersTrend;
+      default:
+        return topProductsTrend;
+    }
   }
 };

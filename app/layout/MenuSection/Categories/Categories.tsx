@@ -1,38 +1,58 @@
-import styles from "./Categories.module.css";
-import cn from "classnames";
-import MenuIcon from "@/public/menu.svg";
-import Link from "next/link";
+'use client';
 
-const firstLevelMenu = [
-  { route: "tables", name: "Столы",},
-  { route: "chairs", name: "Стулья",},
-  { route: "armchairs", name: "Кресла",},
-  { route: "cabinets", name: "Шкафы",},
+import {useEffect, useState} from 'react';
+import styles from "./Categories.module.css";
+import MenuIcon from "@/public/menu.svg";
+import cn from "classnames";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+
+const categoriesMenu = [
+    {route: "tables", name: "Столы",},
+    {route: "chairs", name: "Стулья",},
+    {route: "armchairs", name: "Кресла",},
+    {route: "cabinets", name: "Шкафы",},
 ];
 
-export async function Categories() {
+export function Categories() {
+    const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(true);
 
+    useEffect(() => {
+        onClick(false);
+    }, [pathname]);
 
-        const menu = firstLevelMenu.map((menu) => (
-          <li key={menu.route} className={styles.list_item}>
+    const menu = categoriesMenu.map((menu) => (
+        <li key={menu.route} className={styles.list_item}>
             <Link href={`/${menu.route}`}>
                 <span>{menu.name}</span>
             </Link>
-          </li>
-        ))
+        </li>
+    ))
 
+    const onClick = (open?: boolean) => {
+        if(!isOpen && pathname === '/') {
+            setIsOpen(true);
+        } else if (isOpen || open || pathname !== '/') {
+            setIsOpen(false);
+        }
+    }
 
-  return (
-    <div className={styles.menu}>
-      <MenuIcon />
-      <p className={styles.paragraph}>ALL COLLECTIONS</p>
-      <ul
-        className={cn(styles.list, {
-          [styles.list_hidden]: !Object.values(menu[2]),
-        })}
-      >
-        {menu}
-      </ul>
-    </div>
-  );
+    return (
+        <div
+            className={styles.menu}
+            onClick={() => onClick()}
+        >
+            <MenuIcon/>
+            <p className={styles.paragraph}>ALL COLLECTIONS</p>
+            <ul
+                className={cn(styles.list,  {
+                    [styles.list_visible]: isOpen,
+                    [styles.list_hidden]: !isOpen,
+                })}
+            >
+                {menu}
+            </ul>
+        </div>
+    );
 }

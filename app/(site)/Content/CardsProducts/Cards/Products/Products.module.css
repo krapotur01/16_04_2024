@@ -4,6 +4,7 @@
     gap: 45px;
     justify-content: center;
     position: relative;
+    width: 100%;
 }
 
 .title {

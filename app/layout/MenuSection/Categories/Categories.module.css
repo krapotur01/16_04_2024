@@ -8,6 +8,7 @@
   height: 67px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .paragraph {
@@ -26,6 +27,11 @@
   background-color: #f7f8fa;
   width: 260px;
 }
+
+.list_visible {
+  visibility: visible;
+}
+
 .list_hidden {
   visibility: hidden;
 }
