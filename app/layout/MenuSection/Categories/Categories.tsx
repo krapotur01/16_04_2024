@@ -8,10 +8,10 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 
 const categoriesMenu = [
-    {route: "tables", name: "Столы",},
-    {route: "chairs", name: "Стулья",},
-    {route: "armchairs", name: "Кресла",},
-    {route: "cabinets", name: "Шкафы",},
+    {route: "Стол", name: "Столы",},
+    {route: "Стул", name: "Стулья",},
+    {route: "Кресло", name: "Кресла",},
+    {route: "Шкаф", name: "Шкафы",},
 ];
 
 export function Categories() {
@@ -28,7 +28,14 @@ export function Categories() {
 
     const menu = categoriesMenu.map((menu) => (
         <li key={menu.route} className={styles.list_item}>
-            <Link href={`/${menu.route}`}>
+            <Link href={{
+                      pathname: '/search',
+                      query: {
+                          search: '',
+                          select: menu.route.toLowerCase(),
+                      },
+                  }}
+            >
                 <span>{menu.name}</span>
             </Link>
         </li>
