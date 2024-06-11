@@ -1,4 +1,5 @@
 export interface FurnitureProps {
+  id?: number;
   status: string;
   pic: string;
   product: string;

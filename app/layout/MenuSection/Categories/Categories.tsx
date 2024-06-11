@@ -19,7 +19,11 @@ export function Categories() {
     const [isOpen, setIsOpen] = useState(true);
 
     useEffect(() => {
-        onClick(false);
+        if (pathname === '/') {
+            setIsOpen(true);
+        } else {
+            setIsOpen(false)
+        }
     }, [pathname]);
 
     const menu = categoriesMenu.map((menu) => (
@@ -30,10 +34,10 @@ export function Categories() {
         </li>
     ))
 
-    const onClick = (open?: boolean) => {
-        if(!isOpen && pathname === '/') {
+    const onClick = () => {
+        if (!isOpen) {
             setIsOpen(true);
-        } else if (isOpen || open || pathname !== '/') {
+        } else if (isOpen) {
             setIsOpen(false);
         }
     }
@@ -46,7 +50,7 @@ export function Categories() {
             <MenuIcon/>
             <p className={styles.paragraph}>ALL COLLECTIONS</p>
             <ul
-                className={cn(styles.list,  {
+                className={cn(styles.list, {
                     [styles.list_visible]: isOpen,
                     [styles.list_hidden]: !isOpen,
                 })}

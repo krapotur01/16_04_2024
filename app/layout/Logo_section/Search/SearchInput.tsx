@@ -1,15 +1,17 @@
 'use client';
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./SearchInput.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 export const SearchInput = () => {
     const [query, setQuery] = useState("");
+    const [select, setSelect] = useState("");
 
     const onClick = () => {
         setQuery('');
+        setSelect('');
     }
 
     return (
@@ -23,18 +25,20 @@ export const SearchInput = () => {
                 name="search-form"
                 onChange={(event) => setQuery(event.target.value)}
             />
-            <select name="Категории" className={styles.select}>
-                <option value="Все категории" className={styles.option}>Категории</option>
-                <option value="Категория 1" className={styles.option}>Категория 1</option>
-                <option value="Категория 2" className={styles.option}>Категория 2</option>
-                <option value="Категория 3" className={styles.option}>Категория 3</option>
-                <option value="Категория 4" className={styles.option}>Категория 4</option>
+            <select name="Категории" value={select} className={styles.select}
+                    onChange={(event) => setSelect(event.target.value)}>
+                <option value="Все категории" className={styles.option}>Все категории</option>
+                <option value="Стул" className={styles.option}>Стулья</option>
+                <option value="Стол" className={styles.option}>Столы</option>
+                <option value="Кресло" className={styles.option}>Кресла</option>
+                <option value="Диван" className={styles.option}>Диваны</option>
             </select>
 
             <Link href={{
                 pathname: '/search',
                 query: {
                     search: query.toLowerCase(),
+                    select: select.toLowerCase(),
                 },
             }} className='h-[100%]'>
                 <button className={styles.button} onClick={onClick}>
