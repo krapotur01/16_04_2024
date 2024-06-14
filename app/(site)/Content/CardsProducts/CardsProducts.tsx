@@ -2,8 +2,8 @@
 
 import React, {useState} from "react";
 import {Heading} from "@/app/components";
-import {Cards} from "./Cards/Cards";
-import {FurnitureProps} from "./Cards/Cards.props";
+import {ProductsCards} from "./Cards/ProductsCards";
+import {FurnitureProps} from "./Cards/ProductsCards.props";
 import {HeaderProps} from "./CardsProducts.props";
 import {getTrendProducts, headersTrendProducts} from "../api/trendsData";
 import {getOurProducts, headersOurProducts} from "../api/ourProductsData";
@@ -43,7 +43,7 @@ export const CardsProducts = ({header}: HeaderProps) => {
         <section className="flex flex-col items-center mt-28">
             <Heading tag="h2">{header}</Heading>
             <HeadersProducts headers={getHeaders(header)} getProducts={getProducts}/>
-            <Cards products={products}/>
+            <ProductsCards products={products}/>
         </section>
     );
 };

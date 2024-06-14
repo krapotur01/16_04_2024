@@ -8,10 +8,10 @@ export const Logo_section = () => {
     return (
         <section className={styles.logo_section}>
             <Link href={`/`}>
-                <Logo/>
+                <Logo  className='lg:flex ss:hidden'/>
             </Link>
             <SearchInput />
-            <Cart_block/>
+            <Cart_block className='lg:flex ss:hidden pt-3.5'/>
         </section>
     );
 };

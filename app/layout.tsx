@@ -37,11 +37,11 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
             <title>Мебель</title>
         </head>
         <body className={cn(inter.className, styles.layout)}>
-        <Header/>
-        <Logo_section/>
-        <MenuSection/>
+            <Header/>
+            <Logo_section/>
+            <MenuSection/>
             {children}
-        <Footer/>
+            <Footer/>
         <SpeedInsights/>
         </body>
         </html>

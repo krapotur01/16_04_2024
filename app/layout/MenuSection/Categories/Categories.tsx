@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {DetailedHTMLProps, HTMLAttributes, useEffect, useState} from 'react';
 import styles from "./Categories.module.css";
 import MenuIcon from "@/public/menu.svg";
 import cn from "classnames";
@@ -14,7 +14,9 @@ const categoriesMenu = [
     {route: "Шкаф", name: "Шкафы",},
 ];
 
-export function Categories() {
+interface CategoriesProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{}
+
+export function Categories ({className}:CategoriesProps) {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(true);
 
@@ -27,18 +29,20 @@ export function Categories() {
     }, [pathname]);
 
     const menu = categoriesMenu.map((menu) => (
-        <li key={menu.route} className={styles.list_item}>
-            <Link href={{
-                      pathname: '/search',
-                      query: {
-                          search: '',
-                          select: menu.route.toLowerCase(),
-                      },
-                  }}
-            >
+        <Link key={menu.route}
+              href={{
+                  pathname: '/search',
+                  query: {
+                      search: '',
+                      select: menu.route.toLowerCase(),
+                  },
+              }}
+              className='border-b border-b-[var(--grey-light)] hover:border-0 hover:bg-[var(--primary)] hover:text-[var(--white)] last:border-0'
+        >
+            <li className={styles.list_item}>
                 <span>{menu.name}</span>
-            </Link>
-        </li>
+            </li>
+        </Link>
     ))
 
     const onClick = () => {
@@ -51,7 +55,7 @@ export function Categories() {
 
     return (
         <div
-            className={styles.menu}
+            className={cn(styles.menu, className)}
             onClick={() => onClick()}
         >
             <MenuIcon/>

@@ -31,6 +31,15 @@
   color: grey;
 }
 
+@media (max-width: 1050px) {
+  .description {
+    display: none;
+  }
+  .auth {
+    display: none;
+  }
+}
+
 @media (max-width: 710px) {
   .header {
     display: flex;
@@ -38,8 +47,5 @@
   }
   .description {
     display: none;
-  }
-  .auth {
-    margin: 0;
   }
 }

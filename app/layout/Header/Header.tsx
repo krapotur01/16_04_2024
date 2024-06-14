@@ -1,8 +1,11 @@
 import styles from "./Header.module.css";
+import HeaderNavbar from "@/app/layout/Header/Navbar/Navbar";
+
 
 export const Header = () => {
   return (
     <header className={styles.header}>
+        <HeaderNavbar />
       <span className={styles.description}>
         Welcome to our online shop
       </span>

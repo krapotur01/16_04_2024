@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "./Cards.module.css";
-import cn from "classnames";
-import TagIcon from "@/public/blogs/tag_icon.svg";
+import React from 'react';
+import styles from './BlogsCards.module.css';
+import cn from 'classnames';
+import TagIcon from '@/public/blogs/tag_icon.svg';
 
-export const Cards = () => {
+export const BlogsCards = () => {
   const cards = [
     {
       tag: "FURNITURE",
       date: "23 September 2022",
-      heading: "Begineer guide buying minimal sofa",
+      heading: "Beginner guide buying minimal sofa",
     },
     {
       tag: "TABLE",
@@ -31,7 +31,7 @@ export const Cards = () => {
     return (
       <div
         key={i.heading}
-        className={cn(styles.card, {
+        className={cn(styles.cardsProducts, {
           [styles.furniture]: i.tag == "FURNITURE",
           [styles.table]: i.tag == "TABLE",
           [styles.bench]: i.tag == "BENCH",

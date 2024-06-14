@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useEffect, useState} from "react";
-import {FurnitureProps} from "@/app/(site)/Content/CardsProducts/Cards/Cards.props";
+import {FurnitureProps} from "@/app/(site)/Content/CardsProducts/Cards/ProductsCards.props";
 import {getTrendProducts} from "@/app/(site)/Content/api/trendsData";
 import {useSearchParams} from "next/navigation";
 import {Products} from "../Content/CardsProducts/Cards/Products/Products";

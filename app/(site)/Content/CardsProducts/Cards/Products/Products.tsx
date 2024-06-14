@@ -44,7 +44,7 @@ export const Products = ({products}: ProductsProps) => {
                                 {item.name}
                             </Heading>
 
-                            <div className="flex flex-row items-center justify-between mt-2">
+                            <div className="flex ss:flex-col lg:flex-row items-center justify-between mt-2">
                                 <div className="flex gap-2">
                                     <Price price="discount" className={styles.price}>{item.price_discount}</Price>
                                     <Price price="ghost" className={styles.price}>{item.price}</Price>

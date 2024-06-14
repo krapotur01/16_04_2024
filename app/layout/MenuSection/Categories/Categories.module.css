@@ -20,7 +20,7 @@
 
 .list {
   position: absolute;
-  top: 67px;
+  top: 70px;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -38,31 +38,17 @@
 
 .list_item {
   list-style: none;
-  border-bottom: 1px solid var(--grey-light);
   height: 44px;
   padding: 14px 0 14px 35px;
 
-  color: var(--grey);
+  color: inherit;
   font-weight: 400;
   font-size: 14px;
   line-height: 16.59px;
 }
 
-.list_item:last-child {
-  border: none;
-}
-
-@media (max-width: 1050px) {
-  .list {
-    display: none;
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 1023px) {
   .menu {
-    width: 67px;
-  }
-  .paragraph, .list {
     display: none;
   }
 }
