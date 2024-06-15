@@ -8,10 +8,11 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 
 const categoriesMenu = [
-    {route: "Стол", name: "Столы",},
-    {route: "Стул", name: "Стулья",},
-    {route: "Кресло", name: "Кресла",},
-    {route: "Шкаф", name: "Шкафы",},
+    {route: "/", name: "Все категории",},
+    {route: "/tables", name: "Столы",},
+    {route: "/chairs", name: "Стулья",},
+    {route: "/armchairs", name: "Кресла",},
+    {route: "/cabinets", name: "Шкафы",},
 ];
 
 interface CategoriesProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{}
@@ -30,17 +31,11 @@ export function Categories ({className}:CategoriesProps) {
 
     const menu = categoriesMenu.map((menu) => (
         <Link key={menu.route}
-              href={{
-                  pathname: '/search',
-                  query: {
-                      search: '',
-                      select: menu.route.toLowerCase(),
-                  },
-              }}
+              href={`/products/${menu.route}`}
               className='border-b border-b-[var(--grey-light)] hover:border-0 hover:bg-[var(--primary)] hover:text-[var(--white)] last:border-0'
         >
             <li className={styles.list_item}>
-                <span>{menu.name}</span>
+                <span >{menu.name}</span>
             </li>
         </Link>
     ))

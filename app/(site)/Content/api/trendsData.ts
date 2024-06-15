@@ -1,4 +1,4 @@
-import { FurnitureProps } from "../CardsProducts/Cards/ProductsCards.props";
+import { FurnitureProps } from "../CardsProducts/Cards/Cards.props";
 
 export const headersTrendProducts: string[] = [
   "Top Products",

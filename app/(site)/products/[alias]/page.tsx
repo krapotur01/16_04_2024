@@ -1,33 +1,21 @@
-import { getPage } from "@/api/page";
-import { getMenu } from "@/api/menu";
 import { Heading } from "@/app/components";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import {CardsProducts} from "@/app/(site)/Content";
 
 export const metadata: Metadata = {
   title: "Страница",
 };
 
-export async function generateStaticParams() {
-  const menu = await getMenu(0);
-  return menu.flatMap((item) =>
-    item.pages.map((page) => ({ alias: page.alias }))
-  );
-}
-
-export default async function PageProducts({
-  params,
-}: {
-  params: { alias: string };
-}) {
-  const page = await getPage(params.alias);
-  if (!page) {
+export default function PageProducts({params}: {params: { alias: string };}){
+  if (!params) {
     notFound();
   }
 
   return (
     <div className="w-full grow flex flex-col items-center">
-      <Heading tag="h1">{page?.title}</Heading>
+      <Heading tag="h1">Страница {params.alias}</Heading>
+      <CardsProducts header={""}/>
     </div>
   );
 }

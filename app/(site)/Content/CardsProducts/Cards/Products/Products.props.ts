@@ -8,6 +8,11 @@ export interface FurnitureProps {
   rating: number;
 }
 
+export interface ICategories {
+  category: 'стулья' | 'кресла' | 'диваны' | 'столы' | 'пуфы' | 'шкафы';
+}
+
 export interface ProductsProps {
   products: FurnitureProps[];
+  category?: ICategories;
 }

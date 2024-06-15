@@ -1,4 +1,4 @@
-import { FurnitureProps } from "../CardsProducts/Cards/ProductsCards.props";
+import { FurnitureProps } from "../CardsProducts/Cards/Cards.props";
 
 export const headersOurProducts: string[] = [
   "All Products",
@@ -315,7 +315,7 @@ export const getOurProducts = (products: string) => {
       return bestSeller;
     case "New Arrivals":
       return newArrivals;
-    case "Todays Deals":
+    case "Today Deals":
       return todayDeals;
     default:
       return allProducts;

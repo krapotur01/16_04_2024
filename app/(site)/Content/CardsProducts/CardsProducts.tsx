@@ -1,49 +1,31 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Heading} from "@/app/components";
-import {ProductsCards} from "./Cards/ProductsCards";
-import {FurnitureProps} from "./Cards/ProductsCards.props";
+import {Cards} from "./Cards/Cards";
+import {FurnitureProps} from "./Cards/Cards.props";
 import {HeaderProps} from "./CardsProducts.props";
-import {getTrendProducts, headersTrendProducts} from "../api/trendsData";
-import {getOurProducts, headersOurProducts} from "../api/ourProductsData";
 import {HeadersProducts} from "@/app/(site)/Content/CardsProducts/HeadersProducts/HeadersProducts";
+import {getHeaders, getProducts} from "@/app/(site)/Content/CardsProducts/CardsProducts.helper";
 
 export const CardsProducts = ({header}: HeaderProps) => {
     const [products, setProducts] = useState<FurnitureProps[]>([])
+    const [currentHeader, setCurrentHeader] = useState<string>('')
 
-    const getHeaders = (header: string) => {
-        let headers: string[] = [];
-        switch (header) {
-            case "TRENDING":
-                headers = headersTrendProducts;
-                break;
-            case "OUR PRODUCTS":
-                headers = headersOurProducts;
-                break;
-            default:
-                return headers;
-        }
-        return headers;
-    }
+    useEffect(() => {
+        getHeaders(header);
+        setProducts(getProducts(header, currentHeader));
+    }, [header, currentHeader])
 
-    const getProducts = (currentHeader:  string): FurnitureProps[] => {
-        switch (header) {
-            case "TRENDING":
-                setProducts(getTrendProducts(currentHeader));
-                break;
-            case "OUR PRODUCTS":
-                setProducts(getOurProducts(currentHeader));
-                break;
-        }
-        return products;
+    const getCurrentHeader = (currentHeader:  string) => {
+        setCurrentHeader(currentHeader);
     }
 
     return (
         <section className="flex flex-col items-center mt-28">
             <Heading tag="h2">{header}</Heading>
-            <HeadersProducts headers={getHeaders(header)} getProducts={getProducts}/>
-            <ProductsCards products={products}/>
+            <HeadersProducts headers={getHeaders(header)} getCurrentHeader={getCurrentHeader}/>
+            <Cards products={products}/>
         </section>
     );
 };

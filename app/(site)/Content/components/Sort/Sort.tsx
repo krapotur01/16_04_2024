@@ -11,13 +11,19 @@ export const Sort = ({sort, setSort, className, ...props}: SortProps) => {
             className={cn(styles.sorted, {
                 [styles.active]: sort === SortEnum.Rating,
             })}
-        ><SortIcon className={styles.sortIcon} /> По рейтингу</span>
+        >
+            <SortIcon className={styles.sortIcon} />
+            По рейтингу
+        </span>
 
         <span
             onClick={() => setSort(SortEnum.Price)}
             className={cn(styles.sorted, {
                 [styles.active]: sort === SortEnum.Price,
             })}
-        ><SortIcon className={styles.sortIcon} /> По цене</span>
+        >
+            <SortIcon className={styles.sortIcon} />
+            По цене
+        </span>
     </div>;
 }

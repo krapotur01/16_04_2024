@@ -3,11 +3,11 @@
 import React, {useState} from "react";
 import {Products} from "./Products/Products";
 import ReactPaginate from "react-paginate";
-import {ProductsProps} from "./ProductsCards.props";
+import {CardsProps} from "./Cards.props";
 import Arrow from "./icon_arrow.svg";
-import styles from "./ProductsCards.module.css";
+import styles from "./Cards.module.css";
 
-export const ProductsCards = ({products}: ProductsProps) => {
+export const Cards = ({products}: CardsProps) => {
     const [itemOffset, setItemOffset] = useState<number>(0);
 
     const itemsPerPage: number = 8;
