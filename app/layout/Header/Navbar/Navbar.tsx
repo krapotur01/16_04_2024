@@ -10,23 +10,25 @@ import {
     NavbarMenuItem,
     Link
 } from '@nextui-org/react';
-import NextLink from 'next/link'
 import Logo from "@/public/Logo_header.svg";
 import {Cart_block} from "@/app/layout/Logo_section/Cart_block/Cart_block";
-import cn from "classnames";
+import {usePathname} from "next/navigation";
 
 export default function HeaderNavbar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+    const pathName = usePathname();
+
     const categoriesMenu = [
-        {route: "Стол", name: "Столы",},
-        {route: "Стул", name: "Стулья",},
-        {route: "Кресло", name: "Кресла",},
-        {route: "Шкаф", name: "Шкафы",},
+        {route: "/", name: "Все категории",},
+        {route: "/tables", name: "Столы",},
+        {route: "/chairs", name: "Стулья",},
+        {route: "/armchairs", name: "Кресла",},
+        {route: "/cabinets", name: "Шкафы",},
     ];
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen} className="lg:hidden bg-[var(--primary)] h-[40px]">
+        <Navbar onMenuOpenChange={setIsMenuOpen} className="lg:hidden bg-[var(--primary)] h-[40px]">
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -38,20 +40,19 @@ export default function HeaderNavbar() {
                 <Cart_block className='lg:hidden justify-center items-center'/>
             </NavbarContent>
 
-            <NavbarMenu className={cn({'hidden': !isMenuOpen})}>
+            <NavbarMenu>
                 {categoriesMenu.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>
-                        <NextLink onClick={() => setIsMenuOpen(false)}
-                                  href={{
-                                      pathname: '/search',
-                                      query: {
-                                          search: '',
-                                          select: item.route.toLowerCase(),
-                                      },
-                                  }}
+                        <Link
+                            color={
+                                `/products${item.route}` === pathName || pathName + '/' === `/products${item.route}` ? "primary" : "foreground"
+                            }
+                            className="w-full"
+                            href={`/products/${item.route}`}
+                            size="lg"
                         >
                             {item.name}
-                        </NextLink>
+                        </Link>
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>

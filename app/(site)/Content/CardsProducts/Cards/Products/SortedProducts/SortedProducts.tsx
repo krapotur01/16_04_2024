@@ -7,6 +7,8 @@ import {Icons} from "./Icons_component/Icons";
 import {Heading, Rating} from "@/app/components";
 import {Price, Sort, Status} from "../../../../components";
 import {SortEnum} from "../../../../components/Sort/Sort.props";
+import cn from "classnames";
+import Link from "next/link";
 
 export const SortedProducts = ({products}: ProductsProps) => {
     const [{products: sortedProducts, sort}, dispatchSort] = useReducer(sortReducer, {
@@ -29,15 +31,19 @@ export const SortedProducts = ({products}: ProductsProps) => {
                     {item.status}
                 </Status>
                 <Icons className={styles.icons}/>
-                <Image
-                    src={item.pic}
-                    alt={item.name}
-                    width={269}
-                    height={288}
-                    className={styles.image}
-                />
+                <Link
+                    href={'/products/page-products'}
+                >
+                    <Image
+                        src={item.pic}
+                        alt={item.name}
+                        width={269}
+                        height={288}
+                        className={styles.image}
+                    />
+                </Link>
                 <span className="mt-4 text-gray-400 block">{item.product}</span>
-                <Heading tag="h5" className={styles.title}>
+                <Heading tag="h5" className={cn(styles.title, 'ss:text-center lg:text-start')}>
                     {item.name}
                 </Heading>
 

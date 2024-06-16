@@ -7,8 +7,9 @@ import {FurnitureProps} from "./Cards/Cards.props";
 import {HeaderProps} from "./CardsProducts.props";
 import {HeadersProducts} from "@/app/(site)/Content/CardsProducts/HeadersProducts/HeadersProducts";
 import {getHeaders, getProducts} from "@/app/(site)/Content/CardsProducts/CardsProducts.helper";
+import cn from "classnames";
 
-export const CardsProducts = ({header}: HeaderProps) => {
+export const CardsProducts = ({header, className}: HeaderProps) => {
     const [products, setProducts] = useState<FurnitureProps[]>([])
     const [currentHeader, setCurrentHeader] = useState<string>('')
 
@@ -22,10 +23,10 @@ export const CardsProducts = ({header}: HeaderProps) => {
     }
 
     return (
-        <section className="flex flex-col items-center mt-28">
+        <div className={cn("flex flex-col items-center mt-28", className)}>
             <Heading tag="h2">{header}</Heading>
-            <HeadersProducts headers={getHeaders(header)} getCurrentHeader={getCurrentHeader}/>
+            {currentHeader && <HeadersProducts headers={getHeaders(header)} getCurrentHeader={getCurrentHeader}/>}
             <Cards products={products}/>
-        </section>
+        </div>
     );
 };
