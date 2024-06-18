@@ -1,13 +1,13 @@
 'use client'
 
 import React, {useState} from "react";
-import {Products} from "./Products/Products";
 import ReactPaginate from "react-paginate";
-import {CardsProps} from "./Cards.props";
 import Arrow from "./icon_arrow.svg";
 import styles from "./Cards.module.css";
+import {ProductsProps} from "@/app/(site)/Content/CardsProducts/Products.props";
+import {SortedProducts} from "@/app/(site)/Content/CardsProducts/Cards/SortedProducts/SortedProducts";
 
-export const Cards = ({products}: CardsProps) => {
+export const Cards = ({products}: ProductsProps) => {
     const [itemOffset, setItemOffset] = useState<number>(0);
 
     const itemsPerPage: number = 8;
@@ -22,7 +22,7 @@ export const Cards = ({products}: CardsProps) => {
 
     return (
         <div className="flex gap-x-[30px] gap-y-[45px] items-end justify-center flex-col mt-[70px] relative">
-            <Products products={currentItems}/>
+            <SortedProducts products={currentItems} />
             <ReactPaginate
                 breakLabel="..."
                 nextLabel={<Arrow className='hover:fill-[var(--primary)]' />}
@@ -33,7 +33,7 @@ export const Cards = ({products}: CardsProps) => {
                 renderOnZeroPageCount={null}
                 containerClassName={styles.container}
                 activeClassName={styles.active}
-                pageClassName={styles.page}
+                pageLinkClassName={styles.page}
             />
         </div>
     );

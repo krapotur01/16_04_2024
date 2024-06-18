@@ -1,11 +1,13 @@
 import React, {BaseSyntheticEvent, useEffect, useState} from "react";
 import {Heading} from "@/app/components";
 import cn from "classnames";
-import styles from "@/app/(site)/Content/CardsProducts/Headers.module.css";
-import {HeadersProps} from "./HeadersProducts.props"
+import styles from "@/app/(site)/Content/CardsProducts/Headers/Headers.module.css";
+import {HeadersProps} from "./Headers.props"
 
-export const HeadersProducts = ({headers, getCurrentHeader}: HeadersProps) => {
-    const [eventValue, setEventValue] = useState<string>(headers[0]);
+export const Headers = ({getCurrentHeader}: HeadersProps) => {
+    const [eventValue, setEventValue] = useState<string>('Все товары');
+
+    const headers = ['Все товары', 'Лучшие продажи', 'Новые поступления'];
 
     useEffect(() => {
         getCurrentHeader(eventValue)

@@ -1,12 +1,12 @@
 import React, {useEffect, useReducer} from "react";
 import Image from "next/image";
-import {ProductsProps} from "./Products.props";
+import {ProductsProps} from "../../Products.props";
 import {sortReducer} from "./sort.reducer";
-import styles from "../Products.module.css";
+import styles from "./SortedProducts.module.css";
 import {Icons} from "./Icons_component/Icons";
 import {Heading, Rating} from "@/app/components";
-import {Price, Sort, Status} from "../../../../components";
-import {SortEnum} from "../../../../components/Sort/Sort.props";
+import {Price, Sort, Status} from "../../../components";
+import {SortEnum} from "../../../components/Sort/Sort.props";
 import cn from "classnames";
 import Link from "next/link";
 
@@ -32,7 +32,7 @@ export const SortedProducts = ({products}: ProductsProps) => {
                 </Status>
                 <Icons className={styles.icons}/>
                 <Link
-                    href={'/products/page-products'}
+                    href={`/products/${item.category}/${item.name}`}
                 >
                     <Image
                         src={item.pic}

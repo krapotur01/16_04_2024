@@ -4,19 +4,21 @@ import React, {useEffect, useState} from "react";
 import {Heading} from "@/app/components";
 import {Cards} from "./Cards/Cards";
 import {FurnitureProps} from "./Cards/Cards.props";
-import {HeaderProps} from "./CardsProducts.props";
-import {HeadersProducts} from "@/app/(site)/Content/CardsProducts/HeadersProducts/HeadersProducts";
-import {getHeaders, getProducts} from "@/app/(site)/Content/CardsProducts/CardsProducts.helper";
+import {HeaderProps} from "./Products.props";
+import {Headers} from "@/app/(site)/Content/CardsProducts/Headers/Headers";
+import {getProducts} from "@/app/(site)/Content/api/products";
 import cn from "classnames";
+import {usePathname} from "next/navigation";
 
-export const CardsProducts = ({header, className}: HeaderProps) => {
+export const Products = ({header, category, className}: HeaderProps) => {
     const [products, setProducts] = useState<FurnitureProps[]>([])
-    const [currentHeader, setCurrentHeader] = useState<string>('')
+    const [currentHeader, setCurrentHeader] = useState<string>('ВСЕ ТОВАРЫ')
+
+    const pathName = usePathname();
 
     useEffect(() => {
-        getHeaders(header);
-        setProducts(getProducts(header, currentHeader));
-    }, [header, currentHeader])
+        setProducts(getProducts(currentHeader, category));
+    }, [currentHeader, category])
 
     const getCurrentHeader = (currentHeader:  string) => {
         setCurrentHeader(currentHeader);
@@ -25,7 +27,7 @@ export const CardsProducts = ({header, className}: HeaderProps) => {
     return (
         <div className={cn("flex flex-col items-center mt-28", className)}>
             <Heading tag="h2">{header}</Heading>
-            {currentHeader && <HeadersProducts headers={getHeaders(header)} getCurrentHeader={getCurrentHeader}/>}
+            {pathName === '/' && <Headers getCurrentHeader={getCurrentHeader}/>}
             <Cards products={products}/>
         </div>
     );

@@ -2,12 +2,12 @@
 
 import React, {useEffect, useState} from "react";
 import {FurnitureProps} from "@/app/(site)/Content/CardsProducts/Cards/Cards.props";
-import {getTrendProducts} from "@/app/(site)/Content/api/trendsData";
+import {getProducts} from "@/app/(site)/Content/api/products";
 import {useSearchParams} from "next/navigation";
-import {Products} from "../Content/CardsProducts/Cards/Products/Products";
+import {Cards} from "@/app/(site)/Content/CardsProducts/Cards/Cards";
 
 export default function Search() {
-    const products = getTrendProducts('All products');
+    const products = getProducts('Все товары');
     const [state, setState] = useState<FurnitureProps[]>([]);
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get("search");
@@ -53,7 +53,7 @@ export default function Search() {
                 <p>{select ? `категории: ${select}`: `категории: все категории`}</p>
             </div>
             <div className="flex flex-wrap w-full gap-x-5 gap-y-6 mt-20 justify-center items-center">
-                {!state.length ? notFound() : <Products products={state}/>}
+                {!state.length ? notFound() : <Cards products={state}/>}
             </div>
 
         </div>

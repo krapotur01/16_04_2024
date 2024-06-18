@@ -2,7 +2,7 @@
 
 import {
     Blogs,
-    CardsProducts,
+    Products,
     Feature,
     Hero,
     Offer,
@@ -18,8 +18,7 @@ export default function Home() {
             <Hero/>
             <Feature/>
             <Offer/>
-            <CardsProducts header="TRENDING"/>
-            <CardsProducts header="OUR PRODUCTS"/>
+            <Products header="НАША МЕБЕЛЬ" />
             <SpecialOffer/>
             <Testimonials/>
             <Blogs/>

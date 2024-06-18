@@ -1,3 +1,5 @@
+import {DetailedHTMLProps, HTMLAttributes} from "react";
+
 export interface FurnitureProps {
   id: number;
   category?: string;
@@ -12,6 +14,12 @@ export interface FurnitureProps {
   newArrivals: boolean;
 }
 
-export interface CardsProps {
+export interface ProductsProps {
   products: FurnitureProps[];
+}
+
+export interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  header: string;
+  category?: string;
+
 }
