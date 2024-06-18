@@ -31,14 +31,17 @@ export const SortedProducts = ({products}: ProductsProps) => {
                     {item.status}
                 </Status>
                 <Icons className={styles.icons}/>
-                <Link
-                    href={`/products/${item.category}/${item.name}`}
+                <Link href={{
+                    pathname: `/products/${item.category}/${item.name}`,
+                    query: {search: item.id}
+                }}
                 >
                     <Image
                         src={item.pic}
                         alt={item.name}
-                        width={269}
-                        height={288}
+                        width="0"
+                        height="0"
+                        sizes="100vw"
                         className={styles.image}
                     />
                 </Link>

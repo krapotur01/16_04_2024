@@ -1,10 +1,10 @@
 'use client'
 
 import React, {useEffect, useState} from "react";
-import {FurnitureProps} from "@/app/(site)/Content/CardsProducts/Products.props";
+import {FurnitureProps} from "@/app/(site)/Content/Products/Products.props";
 import {getProducts} from "@/app/(site)/Content/api/products";
 import {useSearchParams} from "next/navigation";
-import {Cards} from "@/app/(site)/Content/CardsProducts/Cards/Cards";
+import {Cards} from "@/app/(site)/Content/Products/Cards/Cards";
 
 export default function Search() {
     const products = getProducts('Все товары');

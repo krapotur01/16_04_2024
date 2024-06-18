@@ -1,7 +1,7 @@
 import React, {BaseSyntheticEvent, useEffect, useState} from "react";
 import {Heading} from "@/app/components";
 import cn from "classnames";
-import styles from "@/app/(site)/Content/CardsProducts/Headers/Headers.module.css";
+import styles from "./Headers.module.css";
 import {HeadersProps} from "./Headers.props"
 
 export const Headers = ({getCurrentHeader}: HeadersProps) => {

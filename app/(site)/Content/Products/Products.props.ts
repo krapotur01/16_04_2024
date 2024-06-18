@@ -12,6 +12,7 @@ export interface FurnitureProps {
   rating: number;
   bestSeller: boolean;
   newArrivals: boolean;
+  description?: string;
 }
 
 export interface ProductsProps {

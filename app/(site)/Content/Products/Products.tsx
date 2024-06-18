@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {Heading} from "@/app/components";
 import {Cards} from "./Cards/Cards";
 import {HeaderProps, FurnitureProps} from "./Products.props";
-import {Headers} from "@/app/(site)/Content/CardsProducts/Headers/Headers";
+import {Headers} from "./Headers/Headers";
 import {getProducts} from "@/app/(site)/Content/api/products";
 import cn from "classnames";
 import {usePathname} from "next/navigation";

@@ -1,19 +1,20 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import {Heading} from "@/app/components";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Страница",
-};
+import {notFound, useSearchParams} from "next/navigation";
+import {ProductPage} from "@/app/components/ProductPage/ProductPage";
 
-export default function PageProducts({params}: {params: { product: string };}){
+
+export default function PageProducts({params}: {params: { product: string }}){
   if (!params) {
     notFound();
   }
 
+  const searchParams = useSearchParams();
+  const id = Number(searchParams.get("search"));
+
   return (
     <div className="w-full grow flex flex-col items-center mt-5">
-      <Heading tag={'h2'}>СТРАНИЦА ПРОДУКТА</Heading>
+      <ProductPage id={id} />
     </div>
   );
 }

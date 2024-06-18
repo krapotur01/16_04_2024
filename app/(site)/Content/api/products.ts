@@ -1,4 +1,4 @@
-import {FurnitureProps} from "../CardsProducts/Products.props";
+import {FurnitureProps} from "../Products/Products.props";
 
 export const allProducts: FurnitureProps[] = [
     {
@@ -13,6 +13,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 2,
@@ -26,6 +27,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: false,
         newArrivals: true,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 3,
@@ -39,6 +41,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 4,
@@ -52,6 +55,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 5,
@@ -65,6 +69,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 0,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 6,
@@ -78,6 +83,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: false,
         newArrivals: true,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 7,
@@ -91,6 +97,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 8,
@@ -104,6 +111,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 9,
@@ -117,6 +125,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: false,
         newArrivals: true,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 10,
@@ -130,7 +139,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: false,
         newArrivals: true,
-
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 11,
@@ -144,6 +153,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 12,
@@ -157,6 +167,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 13,
@@ -170,6 +181,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 3,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 14,
@@ -183,6 +195,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 4,
         bestSeller: true,
         newArrivals: false,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 15,
@@ -196,6 +209,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 5,
         bestSeller: false,
         newArrivals: true,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
     {
         id: 16,
@@ -209,6 +223,7 @@ export const allProducts: FurnitureProps[] = [
         rating: 3,
         bestSeller: false,
         newArrivals: true,
+        description: 'Тут могло быть описание, но его еще нет и есть я, хоть и не нужный, но не бесполезный текст :)'
     },
 ];
 
@@ -251,3 +266,13 @@ export const getProducts = (header: string, category?: string) => {
         }
     }
 };
+
+export const getProductById = (id: number) => {
+    const productsById = allProducts.find((item: FurnitureProps) => {
+        if (item.id === id) {
+            return item;
+        }
+    })
+
+    return productsById;
+}

@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import ReactPaginate from "react-paginate";
 import Arrow from "./icon_arrow.svg";
 import styles from "./Cards.module.css";
-import {ProductsProps} from "@/app/(site)/Content/CardsProducts/Products.props";
+import {ProductsProps} from "../Products.props";
 import {SortedProducts} from "./SortedProducts/SortedProducts";
 
 export const Cards = ({products}: ProductsProps) => {
