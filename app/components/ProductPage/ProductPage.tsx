@@ -23,13 +23,13 @@ export const ProductPage = ({id}: { id: number }) => {
                                 width="0"
                                 height="0"
                                 sizes="100vw"
-                                className="w-full h-[288px] rounded-xl"
+                                className="w-[269px] h-[288px] rounded-xl"
                             />
 
                             <div></div>
                         </div>
 
-                        <div className="flex flex-col items-start gap-3">
+                        <div className="flex flex-col items-start gap-3 m-3">
                             <div className="flex flex-row flex-nowrap gap-3">
                                 <Price price="discount" className={styles.price}>{product.price_discount}</Price>
                                 <Price price="ghost" className={styles.price}>{product.price}</Price>
