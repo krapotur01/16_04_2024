@@ -3,14 +3,13 @@
 import React, {useEffect, useState} from "react";
 import {Heading} from "@/app/components";
 import {Cards} from "./Cards/Cards";
-import {FurnitureProps} from "./Cards/Cards.props";
-import {HeaderProps} from "./Products.props";
+import {HeaderProps, FurnitureProps} from "./Products.props";
 import {Headers} from "@/app/(site)/Content/CardsProducts/Headers/Headers";
 import {getProducts} from "@/app/(site)/Content/api/products";
 import cn from "classnames";
 import {usePathname} from "next/navigation";
 
-export const Products = ({header, category, className}: HeaderProps) => {
+export const Products = ({header, category}: HeaderProps) => {
     const [products, setProducts] = useState<FurnitureProps[]>([])
     const [currentHeader, setCurrentHeader] = useState<string>('ВСЕ ТОВАРЫ')
 

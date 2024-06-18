@@ -1,5 +1,5 @@
 import {SortEnum} from "@/app/(site)/Content/components/Sort/Sort.props";
-import {FurnitureProps} from "./Products.props";
+import {FurnitureProps} from "../../Products.props";
 
 export type SortAction = { type: SortEnum.Rating, products: FurnitureProps[] } | { type: SortEnum.Price, products: FurnitureProps[] };
 

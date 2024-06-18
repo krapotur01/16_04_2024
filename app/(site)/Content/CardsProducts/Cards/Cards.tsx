@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 import Arrow from "./icon_arrow.svg";
 import styles from "./Cards.module.css";
 import {ProductsProps} from "@/app/(site)/Content/CardsProducts/Products.props";
-import {SortedProducts} from "@/app/(site)/Content/CardsProducts/Cards/SortedProducts/SortedProducts";
+import {SortedProducts} from "./SortedProducts/SortedProducts";
 
 export const Cards = ({products}: ProductsProps) => {
     const [itemOffset, setItemOffset] = useState<number>(0);

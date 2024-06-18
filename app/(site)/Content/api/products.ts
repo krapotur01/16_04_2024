@@ -1,4 +1,4 @@
-import {FurnitureProps} from "../CardsProducts/Cards/Cards.props";
+import {FurnitureProps} from "../CardsProducts/Products.props";
 
 export const allProducts: FurnitureProps[] = [
     {
