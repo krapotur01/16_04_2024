@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 19px;
-    margin-top: 70px;
+    margin: 70px auto;
 }
 
 .offer_main {

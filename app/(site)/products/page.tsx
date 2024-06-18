@@ -2,7 +2,12 @@ import React from "react";
 import {Card, CardHeader, Image} from "@nextui-org/react";
 import Link from "next/link";
 import {Heading} from "@/app/components";
+import type {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: 'МЕБЕЛЬ | КАТЕГОРИИ',
+    description: "Качественная мебель на любой вкус",
+};
 
 export default function Products() {
     const categories = [

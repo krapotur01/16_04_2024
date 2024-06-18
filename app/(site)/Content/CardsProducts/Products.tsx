@@ -25,7 +25,7 @@ export const Products = ({header, category, className}: HeaderProps) => {
     }
 
     return (
-        <div className={cn("flex flex-col items-center mt-28", className)}>
+        <div className={cn("flex flex-col items-center")}>
             <Heading tag="h2">{header}</Heading>
             {pathName === '/' && <Headers getCurrentHeader={getCurrentHeader}/>}
             <Cards products={products}/>

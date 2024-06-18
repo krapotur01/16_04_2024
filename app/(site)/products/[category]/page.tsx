@@ -1,8 +1,11 @@
-'use client'
-
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {Products} from "@/app/(site)/Content";
+
+export const metadata: Metadata = {
+    title: 'КАТЕГОРИЯ',
+    description: "Качественная мебель на любой вкус",
+};
 
 export default function PageProducts({params}: { params: { category: string } }) {
     if (!params) {
@@ -27,8 +30,8 @@ export default function PageProducts({params}: { params: { category: string } })
     }
 
     return (
-        <div className="w-full grow flex flex-col items-center mt-5">
-            <Products header={headerPage(params.category)} category={params.category} className='mt-0'/>
+        <div className="w-full grow flex flex-col items-center mt-8">
+            <Products header={headerPage(params.category)} category={params.category} />
         </div>
     );
 }
