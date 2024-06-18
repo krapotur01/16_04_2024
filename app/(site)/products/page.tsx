@@ -30,7 +30,7 @@ export default function Products() {
         {
             id: 4,
             route: 'products/tables',
-            p: 'Куда положить пуль от телевизора?',
+            p: 'Куда положить пульт от телевизора?',
             title: 'Столы',
             src: "/our_products/Wood_Coffee_Tables.png"
         },

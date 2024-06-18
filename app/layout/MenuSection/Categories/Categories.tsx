@@ -8,11 +8,13 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 
 const categoriesMenu = [
-    {route: "/", name: "Все категории",},
-    {route: "/tables", name: "Столы",},
-    {route: "/chairs", name: "Стулья",},
-    {route: "/armchairs", name: "Кресла",},
-    {route: "/cabinets", name: "Шкафы",},
+    {route: "/", name: "ВСЕ КАТЕГОРИИ",},
+    {route: "/chairs", name: "СТУЛЬЯ",},
+    {route: "/armchairs", name: "КРЕСЛА",},
+    {route: "/sofas", name: "ДИВАНЫ",},
+    {route: "/tables", name: "СТОЛЫ",},
+    {route: "/poufs", name: "ПУФЫ",},
+    {route: "/wardrobes", name: "ШКАФЫ",},
 ];
 
 interface CategoriesProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{}

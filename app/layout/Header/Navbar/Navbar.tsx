@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import {
     Navbar,
     NavbarBrand,
@@ -15,16 +15,18 @@ import {Cart_block} from "@/app/layout/Logo_section/Cart_block/Cart_block";
 import {usePathname} from "next/navigation";
 
 export default function HeaderNavbar() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const pathName = usePathname();
 
     const categoriesMenu = [
-        {route: "/", name: "Все категории",},
-        {route: "/tables", name: "Столы",},
-        {route: "/chairs", name: "Стулья",},
-        {route: "/armchairs", name: "Кресла",},
-        {route: "/cabinets", name: "Шкафы",},
+        {route: "/", name: "ВСЕ КАТЕГОРИИ",},
+        {route: "/chairs", name: "СТУЛЬЯ",},
+        {route: "/armchairs", name: "КРЕСЛА",},
+        {route: "/sofas", name: "ДИВАНЫ",},
+        {route: "/tables", name: "СТОЛЫ",},
+        {route: "/poufs", name: "ПУФЫ",},
+        {route: "/wardrobes", name: "ШКАФЫ",},
     ];
 
     return (
