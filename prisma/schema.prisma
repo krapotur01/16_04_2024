@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model User {
+  id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email        String  @unique
+  name         String
+  hashPassword String
+  role         Role    @default(USER)
+  card         Card?
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Card {
+  id         Int        @id @default(autoincrement())
+  productsID Products[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  user       User       @relation(fields: [userEmail], references: [email])
+  userEmail  String     @unique
+}
+
+model Products {
+  id             Int      @id @default(autoincrement())
+  title          String
+  category       Category @relation(fields: [categoryId], references: [id])
+  categoryId     Int
+  status         String?
+  images         String?
+  price_discount String?
+  price          String?
+  rating         Int
+  description    String
+  slug           String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  card           Card     @relation(fields: [cardId], references: [id])
+  cardId         Int
+}
+
+model Category {
+  id       Int        @id @default(autoincrement())
+  name     String
+  products Products[]
+}

@@ -13,7 +13,8 @@ export const metadata: Metadata = {
     description: "Качественная мебель на любой вкус",
 };
 
-export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout(
+    {children}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="ru">
         <head>

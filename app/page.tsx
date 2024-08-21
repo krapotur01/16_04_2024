@@ -1,5 +1,3 @@
-'use client';
-
 import {
     Blogs,
     Products,
@@ -11,17 +9,16 @@ import {
 } from "./(site)/Content";
 import styles from './layout/layout.module.css'
 
-
 export default function Home() {
     return (
-        <main className={styles.content}>
-            <Hero/>
-            <Feature/>
-            <Offer/>
-            <Products header="НАША МЕБЕЛЬ" />
-            <SpecialOffer/>
-            <Testimonials/>
-            <Blogs/>
-        </main>
+            <main className={styles.content}>
+                <Hero/>
+                <Feature/>
+                <Offer/>
+                <Products header="НАША МЕБЕЛЬ"/>
+                <SpecialOffer/>
+                <Testimonials/>
+                <Blogs/>
+            </main>
     );
 }

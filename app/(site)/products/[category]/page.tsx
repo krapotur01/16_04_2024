@@ -1,6 +1,9 @@
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {Products} from "@/app/(site)/Content";
+import React from "react";
+import {getCategory} from "../product.helper";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: 'КАТЕГОРИЯ',
@@ -12,26 +15,20 @@ export default function PageProducts({params}: { params: { category: string } })
         notFound();
     }
 
-    const headerPage = (category: string) => {
-        switch (category) {
-            case 'chairs':
-                return 'СТУЛЬЯ'
-            case 'armchairs':
-                return 'КРЕСЛА'
-            case 'sofas':
-                return 'ДИВАНЫ'
-            case 'poufs':
-                return 'ПУФЫ'
-            case 'tables':
-                return 'СТОЛЫ'
-            default:
-                return 'Такой мебели у нас еще нет :)'
-        }
-    }
-
     return (
-        <div className="w-full grow flex flex-col items-center mt-8">
-            <Products header={headerPage(params.category)} category={params.category} />
+        <div className="w-full grow flex flex-col items-center mt-5">
+            <ul className="flex gap-x-2 mb-5 self-start">
+                <li>
+                    <Link href="/">главная</Link>
+                    {' >'}
+                </li>
+                <li>
+                    <Link href={"/products"}>категории</Link>
+                    {' >'}
+                </li>
+                <li>{getCategory(params.category).toLowerCase()}</li>
+            </ul>
+            <Products header={getCategory(params.category)} category={params.category}/>
         </div>
     );
 }

@@ -15,11 +15,10 @@
 
 .container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   width: max-content;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-flow: row wrap;;
   margin-right: 8vw;
 }
 
@@ -41,7 +40,7 @@
   color: var(--white);
 }
 
-.activePage {
+.active-page {
   background-color: var(--primary);
   color: var(--white);
 }

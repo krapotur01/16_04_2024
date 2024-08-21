@@ -33,7 +33,11 @@ export const SortedProducts = ({products}: ProductsProps) => {
                 <Icons className={styles.icons}/>
                 <Link href={{
                     pathname: `/products/${item.category}/${item.name}`,
-                    query: {search: item.id}
+                    query: {
+                        id: item.id,
+                        category: item.category,
+                        name: item.name,
+                    }
                 }}
                 >
                     <Image

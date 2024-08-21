@@ -38,29 +38,33 @@
     opacity: 1;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .cards {
         gap: 25px 10px;
     }
+
     .image {
         width: 200px;
         height: auto;
     }
+
     .title {
         max-width: 180px;
         margin-top: 5px;
         font-size: 16px;
     }
+
     .price {
         font-size: 16px;
     }
 }
 
-@media (max-width: 420px) {
+@media (width <= 420px) {
     .image {
         width: 180px;
         height: auto;
     }
+
     .title {
         max-width: 180px;
     }

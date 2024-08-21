@@ -36,10 +36,10 @@ export default function HeaderNavbar() {
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="lg:hidden"
                 />
-                <NavbarBrand className="lg:hidden">
-                    <Logo className='fill-white stroke-white]'/>
-                </NavbarBrand>
-                <Cart_block className='lg:hidden justify-center items-center'/>
+                {/*<NavbarBrand className="lg:hidden">*/}
+                {/*    <Logo className='fill-white stroke-white]'/>*/}
+                {/*</NavbarBrand>*/}
+                {/*<Cart_block className='lg:hidden justify-center items-center'/>*/}
             </NavbarContent>
 
             <NavbarMenu>
