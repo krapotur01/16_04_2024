@@ -18,22 +18,22 @@ export const verifySession = React.cache(async () => {
     return {isAuth: true, userId: session?.userId}
 })
 
-export const getUsers = React.cache(async () => {
-    const session = await verifySession();
-    if (!session) return null
-
-    try {
-        const data = await prisma.user.findMany();
-
-        const user = data[0];
-        const filteredUser = filteredUserDTO(user);
-
-        return filteredUser;
-    } catch (error) {
-        console.log('Не удалось получить данные о пользователе.')
-        return null
-    }
-})
+// export const getUsers = React.cache(async () => {
+//     const session = await verifySession();
+//     if (!session) return null
+//
+//     try {
+//         const data = await prisma.user.findMany();
+//
+//         const user = data[0];
+//         const filteredUser = filteredUserDTO(user);
+//
+//         return filteredUser;
+//     } catch (error) {
+//         console.log('Не удалось получить данные о пользователе.')
+//         return null
+//     }
+// })
 
 export interface UserDTO {
     email: string,
@@ -42,9 +42,9 @@ export interface UserDTO {
     role?: Role
 }
 
-function filteredUserDTO(user: UserDTO) {
-    return {
-        name: user.name,
-        email: user.email,
-    }
-}
+// function filteredUserDTO(user: UserDTO) {
+//     return {
+//         name: user.name,
+//         email: user.email,
+//     }
+// }
