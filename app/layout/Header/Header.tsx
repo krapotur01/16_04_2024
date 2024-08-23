@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Header.module.css";
 import HeaderNavbar from "./Navbar/Navbar";
-import Login from "@/app/(site)/Content/Login/Login";
+import Login from "@/app/(auth)/Login/Login";
 import {Heading} from "@/app/components";
 import {verifySession} from "@/app/lib/dal";
 

@@ -5,9 +5,9 @@ import {
     Modal,
     ModalContent, useDisclosure,
 } from "@nextui-org/react";
-import Form from "@/app/(site)/Content/Login/Forms/form";
-import LoginButton from "@/app/(site)/Content/Login/sessionsComponents/LoginButton";
-import LogoutButton from "@/app/(site)/Content/Login/sessionsComponents/LogoutButton";
+import Form from "@/app/(auth)/Login/Forms/form";
+import LoginButton from "@/app/(auth)/Login/sessionsComponents/LoginButton";
+import LogoutButton from "@/app/(auth)/Login/sessionsComponents/LogoutButton";
 
 interface IProps {
     isAuth?: boolean

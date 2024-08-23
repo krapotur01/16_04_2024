@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import React from "react"
 import {render} from '@react-email/components';
-import Email from '@/app/(site)/Content/Login/email/email';
+import Email from '@/app/(auth)/Login/email/email';
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_MAIL_PROVIDER,

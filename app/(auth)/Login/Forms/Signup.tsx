@@ -16,7 +16,7 @@ import {useForm, SubmitHandler} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {SignupFormSchema, FormFields,} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
-import {CurrentForm} from "@/app/(site)/Content/Login/Forms/form";
+import {CurrentForm} from "@/app/(auth)/Login/Forms/form";
 import {sendEmail} from "@/app/lib/sendEmail";
 import cn from "classnames";
 

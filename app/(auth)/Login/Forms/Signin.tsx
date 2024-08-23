@@ -16,7 +16,7 @@ import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
 import {LoginFormFields} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
-import Form, {CurrentForm} from "@/app/(site)/Content/Login/Forms/form";
+import Form, {CurrentForm} from "@/app/(auth)/Login/Forms/form";
 
 interface Props {
     onClose?: (e: PressEvent) => void,
