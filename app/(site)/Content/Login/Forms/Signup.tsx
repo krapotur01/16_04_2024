@@ -1,23 +1,24 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     ModalHeader,
     ModalBody,
     ModalFooter,
     Button,
     Input,
-    Link
 } from "@nextui-org/react";
 import {MailIcon} from '../icons/MailIcon';
 import {LockIcon} from '../icons/LockIcon';
-import {signup} from "@/app/actions/auth";
+import {mailVerification, signup} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {SignupFormSchema, FormFields} from "@/app/lib/definitions";
+import {SignupFormSchema, FormFields,} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
 import {CurrentForm} from "@/app/(site)/Content/Login/Forms/form";
+import {sendEmail} from "@/app/lib/sendEmail";
+import cn from "classnames";
 
 interface Props {
     onClose?: (e: PressEvent) => void,
@@ -26,10 +27,14 @@ interface Props {
 
 export default function Signup({onClose, setCurrentForm}: Props) {
     const [success, setSuccess] = useState<boolean>(false);
+    const [number, setNumber] = useState<string>("");
+    const [sending, setSending] = useState<boolean>(false);
+
     const {
         register,
         handleSubmit,
         setError,
+        getValues,
         formState: {
             errors,
             isSubmitting,
@@ -48,6 +53,19 @@ export default function Signup({onClose, setCurrentForm}: Props) {
         }
     }
 
+    async function randomNumber() {
+        console.log("отправка")
+        const random = ("" + Math.random()).substring(2, 7);
+        setSending(true);
+        setNumber(random);
+        await onSendVerifyCode(random);
+    }
+
+    const onSendVerifyCode = async (number: string) => {
+        const email = getValues("email")
+        await mailVerification(email, number);
+    }
+
     return (
         <>
             {!success ? <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,19 +80,52 @@ export default function Signup({onClose, setCurrentForm}: Props) {
                            variant="bordered"
                            autoComplete="off"/>
                     {(errors.name) && <Paragraph size="s"
-                                               className="text-[var(--red)]">- {errors.name.message}</Paragraph>}
-
+                                                 className="text-[var(--red)]">- {errors.name.message}</Paragraph>}
                     <Input {...register("email")}
                            id="email"
                            name="email"
                            label="Email"
-                           placeholder="Введите ваш email"
-                           type="email" variant="bordered"
+                           placeholder="Введите email"
+                           type="email"
+                           variant="bordered"
                            autoComplete="off"
                            endContent={<MailIcon
                                className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
-                    {errors.email && <Paragraph size="s"
-                                                className="text-[var(--red)]">- {errors.email.message}</Paragraph>}
+                    {(errors.email) && <Paragraph size="s"
+                                                  className="text-[var(--red)]">- {errors.email.message}</Paragraph>}
+
+                    <div className="flex flex-col gap-2">
+                        <Input {...register("verifyCode")}
+                               id="verifyCode"
+                               name="verifyCode"
+                               size="sm"
+                               type="number" variant="underlined"
+                               disabled={!sending}
+                               autoComplete="off"
+                        />
+
+                        {sending
+                            ? getValues("verifyCode") !== number &&
+                            <Paragraph size="s" className="text-[var(--red)] p-0">- Код не верный</Paragraph>
+                            : errors.verifyCode && <Paragraph size="s"
+                                                              className="text-[var(--red)] p-0">- {errors.verifyCode.message}</Paragraph>
+                        }
+
+                        {getValues("verifyCode") === number
+                            ? <Paragraph size="s" className="text-[var(--grey-light)] pt-2">Код верный</Paragraph>
+                            : <Button
+                                className="w-max"
+                                color="primary"
+                                type="button"
+                                isDisabled={sending}
+                                onClick={randomNumber}>Отправить КОД</Button>
+                        }
+                    </div>
+                    {/*{sending && <Paragraph size="s" className="text-[var(--grey-light)] pt-2">Пожалуйста введите код отправленный*/}
+                    {/*    на указанный Вами email</Paragraph>}*/}
+
+                    {/*{getValues("verifyCode") !== number && <Paragraph size="s" className="text-[var(--red)] p-0">- Код указан не верно</Paragraph>}*/}
+
 
                     <Input {...register("password")}
                            id="password"
@@ -137,5 +188,6 @@ export default function Signup({onClose, setCurrentForm}: Props) {
             </div>}
         </>
 
-    );
+    )
+        ;
 }

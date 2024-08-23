@@ -7,6 +7,10 @@ export const SignupFormSchema = z.object({
         .trim(),
     email: z
         .string().email({message: 'Пожалуйста, введите правильный email.'}).trim(),
+    verifyCode: z
+        .string()
+        .length(5, {message: 'Проверьте правильно ли Вы указали полученный код'})
+        .trim(),
     password: z
         .string()
         .min(8, {message: 'Длина должна быть не менее 8 символов.'})
@@ -21,6 +25,7 @@ export const SignupFormSchema = z.object({
     message: "Пароли должны совподать!",
     path: ["confirmPassword"],
 })
+
 
 export type FormFields = z.infer<typeof SignupFormSchema>;
 

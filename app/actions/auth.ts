@@ -3,8 +3,12 @@
 import {FormFields, LoginFormFields} from '@/app/lib/definitions';
 import bcrypt, {compare} from 'bcrypt';
 import prisma from "@/app/lib/db";
-import {redirect} from "next/navigation";
 import {createSession, deleteSession} from "@/app/lib/session";
+import {sendEmail} from "@/app/lib/sendEmail";
+
+export async function mailVerification(email: string, number: string ) {
+    return await sendEmail(email, number);
+}
 
 export async function signup(formData: FormFields) {
     const {name, email, password} = formData;

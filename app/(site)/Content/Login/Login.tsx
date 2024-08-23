@@ -2,7 +2,6 @@
 
 import React from "react";
 import {
-    Button,
     Modal,
     ModalContent, useDisclosure,
 } from "@nextui-org/react";
