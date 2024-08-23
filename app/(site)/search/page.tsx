@@ -17,7 +17,7 @@ export default function Search() {
 
     useEffect(() => {
         search(products, query, select);
-    }, [query, select]);
+    }, [select, query]);
 
     const search_parameters: string[] = Object.values(Object.keys(Object.assign({}, ...products)));
 
