@@ -7,19 +7,21 @@ import {
 } from "@nextui-org/react";
 import Form from "@/app/(auth)/Login/Forms/form";
 import LoginButton from "@/app/(auth)/Login/sessionsComponents/LoginButton";
-import LogoutButton from "@/app/(auth)/Login/sessionsComponents/LogoutButton";
+import Avatar from "@/app/(auth)/Login/sessionsComponents/Avatar";
 
 interface IProps {
-    isAuth?: boolean
+    isAuth?: boolean,
+    userEmail?: string,
+    userName?: string,
 }
 
-export default function Login({isAuth}: IProps ) {
+export default function Login({isAuth, userEmail, userName}: IProps ) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     return (
         <>
             <LoginButton onOpen={onOpen} isAuth={isAuth}/>
-            <LogoutButton isAuth={isAuth} />
+            <Avatar isAuth={isAuth} userEmail={userEmail} userName={userName}/>
             <Modal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

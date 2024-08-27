@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useEffect, useState} from "react";
+import React, {useRef, useState} from "react";
 import {
     ModalHeader,
     ModalBody,
@@ -9,7 +9,8 @@ import {
     Input,
 } from "@nextui-org/react";
 import {MailIcon} from '../icons/MailIcon';
-import {LockIcon} from '../icons/LockIcon';
+import {EyeSlashFilledIcon} from '../icons/EyeSlashFilledIcon';
+import {EyeFilledIcon} from '../icons/EyeFilledIcon';
 import {mailVerification, signup} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
@@ -17,8 +18,6 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {SignupFormSchema, FormFields,} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
 import {CurrentForm} from "@/app/(auth)/Login/Forms/form";
-import {sendEmail} from "@/app/lib/sendEmail";
-import cn from "classnames";
 
 interface Props {
     onClose?: (e: PressEvent) => void,
@@ -28,7 +27,11 @@ interface Props {
 export default function Signup({onClose, setCurrentForm}: Props) {
     const [success, setSuccess] = useState<boolean>(false);
     const [number, setNumber] = useState<string>("");
+    const [verified, setVerified] = useState<boolean>(false);
+    const [count, setCount] = useState<number>(0);
     const [sending, setSending] = useState<boolean>(false);
+    const [disabled, setDisabled] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = React.useState(false);
 
     const {
         register,
@@ -40,7 +43,8 @@ export default function Signup({onClose, setCurrentForm}: Props) {
             isSubmitting,
         }
     } = useForm<FormFields>({resolver: zodResolver(SignupFormSchema), mode: "onTouched"});
-
+    const timeoutId = useRef<NodeJS.Timeout>()
+    const toggleVisibility = () => setIsVisible(!isVisible);
 
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
         const message = await signup(data)
@@ -54,16 +58,43 @@ export default function Signup({onClose, setCurrentForm}: Props) {
     }
 
     async function randomNumber() {
-        console.log("отправка")
-        const random = ("" + Math.random()).substring(2, 7);
-        setSending(true);
-        setNumber(random);
-        await onSendVerifyCode(random);
+        if (count <= 2) {
+            setCount(count + 1);
+            const random = ("" + Math.random()).substring(2, 7);
+            setSending(true);
+            setDisabled(true);
+            setNumber(random);
+            await onSendVerifyCode(random);
+        } else {
+            setError("verifyCode", {
+                message: "Вы исчерпали количество попыток. Повторите через 1 минуту.",
+            })
+            setDisabled(true);
+            timeoutId.current = setTimeout(() => {
+                setCount(0);
+                setDisabled(false);
+            }, 60000);
+            return () => clearTimeout(timeoutId.current);
+        }
+
     }
 
     const onSendVerifyCode = async (number: string) => {
         const email = getValues("email")
-        await mailVerification(email, number);
+
+        const message = await mailVerification(email, number);
+        if (message.error) {
+            setError("email", {
+                message: message?.error,
+            })
+        }
+        timeoutId.current = setTimeout(() => setDisabled(false), 1000);
+        return () => clearTimeout(timeoutId.current);
+    }
+
+    const checkingCode = () => {
+        const code = getValues("verifyCode");
+        if (code === number) setVerified(true);
     }
 
     return (
@@ -100,43 +131,53 @@ export default function Signup({onClose, setCurrentForm}: Props) {
                                name="verifyCode"
                                size="sm"
                                type="number" variant="underlined"
-                               disabled={!sending}
+                               disabled={!sending || verified}
                                autoComplete="off"
+                               onBlur={checkingCode}
                         />
+                        {sending && getValues("verifyCode")?.length > 1 && getValues("verifyCode") !== number &&
+                            <Paragraph size="s" className="text-[var(--red)] p-0">- Код не верный</Paragraph>}
+                        {disabled && errors.verifyCode && <Paragraph size="s"
+                                                                     className="text-[var(--red)]">- {errors.verifyCode.message}</Paragraph>}
 
-                        {sending
-                            ? getValues("verifyCode") !== number &&
-                            <Paragraph size="s" className="text-[var(--red)] p-0">- Код не верный</Paragraph>
-                            : errors.verifyCode && <Paragraph size="s"
-                                                              className="text-[var(--red)] p-0">- {errors.verifyCode.message}</Paragraph>
-                        }
-
-                        {getValues("verifyCode") === number
-                            ? <Paragraph size="s" className="text-[var(--grey-light)] pt-2">Код верный</Paragraph>
-                            : <Button
-                                className="w-max"
-                                color="primary"
-                                type="button"
-                                isDisabled={sending}
-                                onClick={randomNumber}>Отправить КОД</Button>
+                        {!verified
+                            ? <div className="flex flex-row gap-2 items-center">
+                                <Button
+                                    className="w-max"
+                                    color="primary"
+                                    type="button"
+                                    isDisabled={disabled}
+                                    onClick={randomNumber}>
+                                    Отправить
+                                </Button>
+                                {!disabled &&
+                                    <Paragraph size="s" className="text-[var(--grey-light)] pt-2">нажмите, чтобы
+                                        отправить
+                                        код</Paragraph>}
+                            </div>
+                            : <Paragraph size="s" className="text-[var(--grey-light)] pt-2">Код верный</Paragraph>
                         }
                     </div>
-                    {/*{sending && <Paragraph size="s" className="text-[var(--grey-light)] pt-2">Пожалуйста введите код отправленный*/}
-                    {/*    на указанный Вами email</Paragraph>}*/}
-
-                    {/*{getValues("verifyCode") !== number && <Paragraph size="s" className="text-[var(--red)] p-0">- Код указан не верно</Paragraph>}*/}
-
 
                     <Input {...register("password")}
                            id="password"
                            name="password"
                            label="Пароль"
                            placeholder="Введите ваш пароль"
-                           type="password"
+                           type={isVisible ? "text" : "password"}
+                           disabled={getValues("verifyCode") !== number}
                            variant="bordered"
                            autoComplete="off"
-                           endContent={<LockIcon
-                               className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
+                           endContent={
+                               <button className="focus:outline-none" type="button" onClick={toggleVisibility}
+                                       aria-label="toggle password visibility">
+                                   {isVisible ? (
+                                       <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
+                                   ) : (
+                                       <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
+                                   )}
+                               </button>
+                           }/>
                     {errors.password &&
                         <Paragraph size="s" className="text-[var(--red)]">- {errors.password.message}</Paragraph>}
 
@@ -145,11 +186,19 @@ export default function Signup({onClose, setCurrentForm}: Props) {
                            name="confirmPassword"
                            label="Подтвердите пароль"
                            placeholder="Введите пароль еще раз"
-                           type="password"
+                           type={isVisible ? "text" : "password"}
                            variant="bordered"
                            autoComplete="off"
-                           endContent={<LockIcon
-                               className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
+                           endContent={
+                               <button className="focus:outline-none" type="button" onClick={toggleVisibility}
+                                       aria-label="toggle confirmPassword visibility">
+                                   {isVisible ? (
+                                       <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
+                                   ) : (
+                                       <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
+                                   )}
+                               </button>
+                           }/>
                     {errors.confirmPassword && <Paragraph size="s"
                                                           className="text-[var(--red)]">- {errors.confirmPassword.message}</Paragraph>}
 

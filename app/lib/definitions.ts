@@ -16,9 +16,6 @@ export const SignupFormSchema = z.object({
         .min(8, {message: 'Длина должна быть не менее 8 символов.'})
         .regex(/[a-zA-Z]/, {message: 'Должен содержать хотя бы одну букву.'})
         .regex(/[0-9]/, {message: 'Должен содержать хотя бы одну цифру.'})
-        .regex(/[^a-zA-Z0-9]/, {
-            message: 'Должен содержать хотя бы один специальный символ.',
-        })
         .trim(),
     confirmPassword: z.string(),
 }).refine(data => data.password === data.confirmPassword, {
@@ -44,8 +41,3 @@ export type LoginFormFields = {
 //     message?: string
 // }
 //     | undefined
-
-export type SessionPayload = {
-    userId: string,
-    expiresAt: Date
-}

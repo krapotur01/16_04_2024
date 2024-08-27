@@ -7,7 +7,15 @@ import {createSession, deleteSession} from "@/app/lib/session";
 import {sendEmail} from "@/app/lib/sendEmail";
 
 export async function mailVerification(email: string, number: string ) {
-    return await sendEmail(email, number);
+    const userEmail = await prisma.user.findUnique({
+        where: {
+            email: email as string,
+        },
+    })
+    if (userEmail) return {error: `Пользователь с таким email уже существует. Пожалуйста, войдите в систему используя email и пароль или используйте другой email для регистрации.`};
+
+    await sendEmail(email, number);
+    return {success: `Код отправлен.`}
 }
 
 export async function signup(formData: FormFields) {
@@ -20,7 +28,7 @@ export async function signup(formData: FormFields) {
         where: {
             email: email as string,
         },
-    });
+    })
     if (userEmail) return {error: '- Пользователь с таким email уже существует!'}
 
     // Создание пользователя в БД
@@ -34,6 +42,7 @@ export async function signup(formData: FormFields) {
 
     // 4. Create user session
     await createSession(newUser.id);
+
     return {
         success: `Регистрация прошла успешно.`
     }
