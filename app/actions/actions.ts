@@ -1,8 +1,5 @@
 "use server";
 
-import prisma from "@/app/lib/db";
-import {revalidatePath} from "next/cache";
-
 // export async function createPost(formData: FormData) {
 //     await prisma.posts.create({
 //         data: {
@@ -17,9 +14,9 @@ import {revalidatePath} from "next/cache";
 //     revalidatePath('contacts');
 // }
 //
-// export async function updatePost(formData: FormData) {
-//     await prisma.posts.update( {
-//         where: { id: Number(formData.get("id")) as number },
+// export async function resetPassword(formData: FormData) {
+//     await prisma.user.update( {
+//         where: { password: formData.get("email") as string },
 //         data: {
 //             content: formData.get("content") as string,
 //         }

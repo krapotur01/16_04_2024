@@ -9,22 +9,22 @@ import {
     Input,
 } from "@nextui-org/react";
 import {MailIcon} from '../icons/MailIcon';
-import {EyeSlashFilledIcon} from '../icons/EyeSlashFilledIcon';
-import {EyeFilledIcon} from '../icons/EyeFilledIcon';
-import {mailSignUpVerification, signup} from "@/app/actions/auth";
+import {mailResetPasswordVerification, resetPassword} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {SignupFormSchema, FormFields,} from "@/app/lib/definitions";
+import {ResetPasswordFormFields, ResetPasswordFormSchema} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
 import {CurrentForm} from "@/app/(auth)/Login/Forms/form";
+import {EyeSlashFilledIcon} from "@/app/(auth)/Login/icons/EyeSlashFilledIcon";
+import {EyeFilledIcon} from "@/app/(auth)/Login/icons/EyeFilledIcon";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 interface Props {
     onClose?: (e: PressEvent) => void,
     setCurrentForm?: (currentForm: CurrentForm) => void,
 }
 
-export default function Signup({onClose, setCurrentForm}: Props) {
+export default function ResetPassword({onClose, setCurrentForm}: Props) {
     const [success, setSuccess] = useState<boolean>(false);
     const [number, setNumber] = useState<string>("");
     const [verified, setVerified] = useState<boolean>(false);
@@ -32,6 +32,9 @@ export default function Signup({onClose, setCurrentForm}: Props) {
     const [sending, setSending] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [isVisible, setIsVisible] = React.useState(false);
+
+    const timeoutId = useRef<NodeJS.Timeout>()
+    const toggleVisibility = () => setIsVisible(!isVisible);
 
     const {
         register,
@@ -42,12 +45,10 @@ export default function Signup({onClose, setCurrentForm}: Props) {
             errors,
             isSubmitting,
         }
-    } = useForm<FormFields>({resolver: zodResolver(SignupFormSchema), mode: "onTouched"});
-    const timeoutId = useRef<NodeJS.Timeout>()
-    const toggleVisibility = () => setIsVisible(!isVisible);
+    } = useForm<ResetPasswordFormFields>({resolver: zodResolver(ResetPasswordFormSchema), mode: "onTouched"});
 
-    const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        const message = await signup(data)
+    const onSubmit: SubmitHandler<ResetPasswordFormFields> = async (data) => {
+        const message = await resetPassword(data)
         if (message.error) {
             setError("root", {
                 message: message?.error,
@@ -82,7 +83,7 @@ export default function Signup({onClose, setCurrentForm}: Props) {
     const onSendVerifyCode = async (number: string) => {
         const email = getValues("email")
 
-        const message = await mailSignUpVerification(email, number);
+        const message = await mailResetPasswordVerification(email, number);
         if (message.error) {
             setError("email", {
                 message: message?.error,
@@ -100,30 +101,19 @@ export default function Signup({onClose, setCurrentForm}: Props) {
     return (
         <>
             {!success ? <form onSubmit={handleSubmit(onSubmit)}>
-                <ModalHeader className="">Регистрация</ModalHeader>
+                <ModalHeader className="">Востановление пароля</ModalHeader>
                 <ModalBody>
-                    <Input {...register("name")}
-                           id="name"
-                           name="name"
-                           autoFocus label="Имя"
-                           placeholder="Введите имя"
-                           type="text"
-                           variant="bordered"
-                           autoComplete="off"/>
-                    {(errors.name) && <Paragraph size="s"
-                                                 className="text-[var(--red)]">- {errors.name.message}</Paragraph>}
                     <Input {...register("email")}
                            id="email"
                            name="email"
-                           label="Email"
-                           placeholder="Введите email"
-                           type="email"
-                           variant="bordered"
+                           autoFocus label="Email"
+                           placeholder="Введите ваш email"
+                           type="email" variant="bordered"
                            autoComplete="off"
                            endContent={<MailIcon
                                className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
-                    {(errors.email) && <Paragraph size="s"
-                                                  className="text-[var(--red)]">- {errors.email.message}</Paragraph>}
+                    {errors.email &&
+                        <Paragraph size="s" className="text-[var(--red)]">- {errors.email.message}</Paragraph>}
 
                     <div className="flex flex-col gap-2">
                         <Input {...register("verifyCode")}
@@ -187,6 +177,7 @@ export default function Signup({onClose, setCurrentForm}: Props) {
                            label="Подтвердите пароль"
                            placeholder="Введите пароль еще раз"
                            type={isVisible ? "text" : "password"}
+                           disabled={getValues("verifyCode") !== number}
                            variant="bordered"
                            autoComplete="off"
                            endContent={
@@ -202,34 +193,38 @@ export default function Signup({onClose, setCurrentForm}: Props) {
                     {errors.confirmPassword && <Paragraph size="s"
                                                           className="text-[var(--red)]">- {errors.confirmPassword.message}</Paragraph>}
 
-                    <div className="flex py-2 px-1 justify-end">
+                    <div className="flex py-2 px-1 justify-between">
                         <span
-                            className="cursor-pointer text-[var(--primary)] hover:opacity-80"
+                            className="cursor-pointer text-[var(--blue)] hover:opacity-80"
                             onClick={setCurrentForm ? () => setCurrentForm(CurrentForm.singIn) : undefined}
                         >войти</span>
+                        <span
+                            className="cursor-pointer text-[var(--primary)] hover:opacity-80"
+                            onClick={setCurrentForm ? () => setCurrentForm(CurrentForm.singUp) : undefined}
+                        >зарегистрироваться</span>
                     </div>
 
                     {errors.root && <Paragraph
                         aria-live="polite" size="s"
-                        className="text-[var(--red)] p-0">{errors.root.message}
-                    </Paragraph>}
+                        className="text-[var(--red)] p-0">{errors.root.message}</Paragraph>
+                    }
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button color="danger" variant="flat" onPress={onClose}>
+                    <Button color="danger" variant="flat" onPress={onClose} className="w-[95px]">
                         Закрыть
                     </Button>
                     <Button
                         className="bg-[var(--primary)] text-[var(--white)]"
                         disabled={isSubmitting}
                         type="submit"
+                        onPress={success ? onClose : undefined}
                     >
-                        {isSubmitting ? "Идет отправка..." : "Зарегистрироваться"}
+                        {isSubmitting ? "Вход..." : "Обновить пароль"}
                     </Button>
                 </ModalFooter>
             </form> : <div className="flex flex-col justify-center items-center gap-2 m-10">
                 <h3 className="text-gray-500 font-bold">Добро пожаловать!</h3>
-                <h4 className="text-gray-500 font-bold">регистрация прошла успешно</h4>
                 <h4 className="text-gray-500">вы вошли на наш
                     <Button className="bg-[var(--primary)] text-[var(--white)] ml-2"
                             onPress={onClose}>сайт</Button>
@@ -237,6 +232,5 @@ export default function Signup({onClose, setCurrentForm}: Props) {
             </div>}
         </>
 
-    )
-        ;
+    );
 }

@@ -7,16 +7,16 @@ import {
     ModalFooter,
     Button,
     Input,
-    Link
 } from "@nextui-org/react";
 import {MailIcon} from '../icons/MailIcon';
 import {LockIcon} from '../icons/LockIcon';
 import {login} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
-import {LoginFormFields} from "@/app/lib/definitions";
+import {LoginFormFields, SignInFormSchema} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
-import Form, {CurrentForm} from "@/app/(auth)/Login/Forms/form";
+import {CurrentForm} from "@/app/(auth)/Login/Forms/form";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 interface Props {
     onClose?: (e: PressEvent) => void,
@@ -34,7 +34,7 @@ export default function SignIn({onClose, setCurrentForm}: Props) {
             errors,
             isSubmitting,
         }
-    } = useForm<LoginFormFields>();
+    } = useForm<LoginFormFields>({resolver: zodResolver(SignInFormSchema), mode: "onTouched"});
 
     const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
         const message = await login(data)
@@ -60,6 +60,8 @@ export default function SignIn({onClose, setCurrentForm}: Props) {
                            type="email" variant="bordered"
                            autoComplete="off"
                            endContent={<MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
+                    {errors.email &&
+                        <Paragraph size="s" className="text-[var(--red)]">- {errors.email.message}</Paragraph>}
 
                     <Input {...register("password")}
                            id="password"
@@ -72,7 +74,10 @@ export default function SignIn({onClose, setCurrentForm}: Props) {
                            endContent={<LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>}/>
 
                     <div className="flex py-2 px-1 justify-between">
-                        <Link color="primary" href="#" size="sm">забыли пароль?</Link>
+                        <span
+                            className="cursor-pointer text-[var(--blue)] hover:opacity-80"
+                            onClick={setCurrentForm ? () => setCurrentForm(CurrentForm.reset) : undefined}
+                        >востановить пароль</span>
                         <span
                             className="cursor-pointer text-[var(--primary)] hover:opacity-80"
                             onClick={setCurrentForm ? () => setCurrentForm(CurrentForm.singUp) : undefined}
