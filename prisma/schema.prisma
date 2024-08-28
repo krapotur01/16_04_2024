@@ -4,13 +4,14 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRES_URL")
+  url = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
   id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   email        String  @unique
-  image        String?
+  userAvatar   String?
   name         String
   hashPassword String
   role         Role    @default(USER)

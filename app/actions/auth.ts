@@ -93,10 +93,10 @@ export async function signup(formData: FormData) {
     // Создание пользователя в БД
     const newUser = await prisma.user.create({
         data: {
-            image: imgUrl as string,
             name: name as string,
             email: email as string,
             hashPassword: hashedPassword as string,
+            userAvatar: imgUrl as string,
         },
     })
 
