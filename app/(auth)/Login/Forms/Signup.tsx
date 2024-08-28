@@ -11,7 +11,7 @@ import {
 import {MailIcon} from '../icons/MailIcon';
 import {EyeSlashFilledIcon} from '../icons/EyeSlashFilledIcon';
 import {EyeFilledIcon} from '../icons/EyeFilledIcon';
-import {mailSignUpVerification} from "@/app/actions/auth";
+import {mailSignUpVerification, signup} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
