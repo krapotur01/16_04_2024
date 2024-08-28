@@ -1,17 +1,32 @@
 'use server';
 
-import {FormFields, LoginFormFields, ResetPasswordFormFields} from '@/app/lib/definitions';
+import {LoginFormFields, ResetPasswordFormFields} from '@/app/lib/definitions';
 import bcrypt, {compare} from 'bcrypt';
 import prisma from "@/app/lib/db";
 import {createSession, deleteSession} from "@/app/lib/session";
 import {sendEmail} from "@/app/lib/sendEmail";
+import {writeFile} from "fs/promises";
+import {join} from 'path';
+
+export async function uploadUserImage(image: File) {
+    if (!image) {
+        throw new Error("No file uploaded");
+    }
+
+    const bytes = await image.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    const path = join('./public', 'usersAvatars', image.name)
+    await writeFile(path, buffer);
+    return path;
+}
 
 export async function getUser(email: string) {
-     return prisma.user.findUnique({
-         where: {
-             email: email as string,
-         }
-     });
+    return prisma.user.findUnique({
+        where: {
+            email: email as string,
+        }
+    });
 }
 
 export async function mailSignUpVerification(email: string, number: string) {
@@ -64,22 +79,21 @@ export async function resetPassword(formData: ResetPasswordFormFields) {
     }
 }
 
-export async function signup(formData: FormFields) {
-    const {name, email, password} = formData;
+export async function signup(formData: FormData) {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const userImage = formData.get("userImage") as File;
+
+    const imgUrl = await uploadUserImage(userImage);
+
     // Хешируем пароль пользователя перед его сохранением
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Проверка на существует пользователь в базе или нет
-    const userEmail = await prisma.user.findUnique({
-        where: {
-            email: email as string,
-        },
-    })
-    if (userEmail) return {error: '- Пользователь с таким email уже существует!'}
 
     // Создание пользователя в БД
     const newUser = await prisma.user.create({
         data: {
+            image: imgUrl as string,
             name: name as string,
             email: email as string,
             hashPassword: hashedPassword as string,

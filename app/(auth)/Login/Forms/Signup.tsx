@@ -11,9 +11,9 @@ import {
 import {MailIcon} from '../icons/MailIcon';
 import {EyeSlashFilledIcon} from '../icons/EyeSlashFilledIcon';
 import {EyeFilledIcon} from '../icons/EyeFilledIcon';
-import {mailSignUpVerification, signup} from "@/app/actions/auth";
+import {mailSignUpVerification} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
-import {useForm, SubmitHandler} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {SignupFormSchema, FormFields,} from "@/app/lib/definitions";
 import {PressEvent} from "@react-types/shared";
@@ -35,7 +35,6 @@ export default function Signup({onClose, setCurrentForm}: Props) {
 
     const {
         register,
-        handleSubmit,
         setError,
         getValues,
         formState: {
@@ -47,13 +46,10 @@ export default function Signup({onClose, setCurrentForm}: Props) {
     const timeoutId = useRef<NodeJS.Timeout>()
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-    const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        const message = await signup(data)
-        if (message.error) {
-            setError("root", {
-                message: message?.error,
-            })
-        } else if (message.success) {
+    const onSubmit = async (data: FormData) => {
+        const message = await signup(data);
+
+        if (message.success) {
             setSuccess(true);
         }
     }
@@ -101,9 +97,18 @@ export default function Signup({onClose, setCurrentForm}: Props) {
 
     return (
         <>
-            {!success ? <form onSubmit={handleSubmit(onSubmit)}>
+            {!success ? <form action={onSubmit}>
                 <ModalHeader className="">Регистрация</ModalHeader>
                 <ModalBody>
+                    <Input {...register("userImage")}
+                           id="userImage"
+                           name="userImage"
+                           type="file"
+                           variant="bordered"
+                           accept="image/*, jpeg, jpg, png"
+                    />
+                    {(errors.userImage) && <Paragraph size="s"
+                                                 className="text-[var(--red)]">- {errors.userImage?.message?.toString()}</Paragraph>}
                     <Input {...register("name")}
                            id="name"
                            name="name"

@@ -17,7 +17,7 @@ export async function sendEmail(email: string, randomNumber: string, currentMail
     const emailHtml = render(<Email verificationCode={randomNumber} currentMail={currentMail}/>);
 
     const options = {
-        from: 'krapotur@mail.ru',
+        from: process.env.MAIL_SEND_LOGIN,
         to: email,
         subject: 'Код подтверждения электронной почты',
         html: emailHtml,

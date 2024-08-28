@@ -21,7 +21,7 @@ export default function Avatar({isAuth, userEmail, userName}: IProps) {
                     as="button"
                     avatarProps={{
                         isBordered: true,
-                        src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+                        src: "/usersAvatars/avatar2.png",
                     }}
                     className="transition-transform"
                     description={userEmail}
