@@ -23,7 +23,7 @@ export async function mailSignUpVerification(email: string, number: string) {
         };
     }
 
-    await sendEmail(email, number);
+    await sendEmail(email, number, "sign-up");
     return {success: `Код отправлен.`};
 }
 
@@ -36,7 +36,7 @@ export async function mailResetPasswordVerification(email: string, number: strin
         }
     }
 
-    await sendEmail(email, number);
+    await sendEmail(email, number, "reset-password");
     return {success: `Код отправлен.`};
 }
 

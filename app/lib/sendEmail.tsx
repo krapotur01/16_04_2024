@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-export async function sendEmail(email: string, randomNumber: string) {
-    const emailHtml = render(<Email verificationCode={randomNumber}/>);
+export async function sendEmail(email: string, randomNumber: string, currentMail: string) {
+    const emailHtml = render(<Email verificationCode={randomNumber} currentMail={currentMail}/>);
 
     const options = {
         from: 'krapotur@mail.ru',

@@ -13,9 +13,48 @@ import * as React from "react";
 
 interface EmailProps {
     verificationCode?: string;
+    currentMail: string;
 }
 
-export default function Email({verificationCode}: EmailProps) {
+export default function Email({verificationCode, currentMail}: EmailProps) {
+
+    const switchMailComponent = (current: string) => {
+        switch (current) {
+            case "sign-up":
+                return <>
+                    <Heading style={h1}>Подтверждение электронной почты</Heading>
+                    <Text style={mainText}>
+                        Спасибо, что решили стать нашим клиентом. Мы хотим убедиться,
+                        что это действительно вы. Пожалуйста, введите следующий проверочный код в форме
+                        регистрации.
+                        Если вы не хотите создавать учетную запись, вы можете проигнорировать это
+                        сообщение.
+                    </Text>
+                </>;
+            case "reset-password":
+                return <>
+                    <Heading style={h1}>Сброс пароля: востановление доступа</Heading>
+                    <Text style={mainText}>
+                        Мы хотим убедиться, что это действительно вы. Пожалуйста, введите следующий проверочный код в
+                        форме востановления пароля.
+                        Если это были не вы, проигнорируйте это
+                        сообщение.
+                    </Text>
+                </>;
+            default:
+                return <>
+                    <Heading style={h1}>Подтверждение электронной почты</Heading>
+                    <Text style={mainText}>
+                        Спасибо, что решили стать нашим клиентом. Мы хотим убедиться,
+                        что это действительно вы. Пожалуйста, введите следующий проверочный код в форме
+                        регистрации.
+                        Если вы не хотите создавать учетную запись, вы можете проигнорировать это
+                        сообщение.
+                    </Text>
+                </>;
+        }
+    }
+
     return (
         <Html>
             <Head/>
@@ -24,17 +63,9 @@ export default function Email({verificationCode}: EmailProps) {
                 <Container style={container}>
                     <Section style={coverSection}>
                         <Section style={upperSection}>
-                            <Heading style={h1}>Подтверждение электронной почты</Heading>
-                            <Text style={mainText}>
-                                Спасибо, что решили стать нашим клиентом. Мы хотим убедиться,
-                                что это действительно вы. Пожалуйста, введите следующий проверочный код на странице
-                                регистрации.
-                                Если вы не хотите создавать учетную запись, вы можете проигнорировать это
-                                сообщение.
-                            </Text>
+                            {switchMailComponent(currentMail)}
                             <Section style={verificationSection}>
                                 <Text style={verifyText}>КОД</Text>
-
                                 <Text style={codeText}>{verificationCode}</Text>
                                 <Text style={validityText}>
                                     (Этот код будет действовать 10 минут)
@@ -51,7 +82,8 @@ export default function Email({verificationCode}: EmailProps) {
                         </Section>
                     </Section>
                     <Text style={footerText}>
-                        Это сообщение отправлено в целях предоставления возможности для регистрации на сайте.
+                        Это сообщение отправлено в целях предоставления возможности для регистрации или востановления
+                        пароля на сайте.
                     </Text>
                 </Container>
             </Body>
@@ -79,28 +111,12 @@ const h1 = {
     marginBottom: "15px",
 };
 
-const link = {
-    color: "#2754C5",
-    fontFamily:
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    fontSize: "14px",
-    textDecoration: "underline",
-};
-
 const text = {
     color: "#333",
     fontFamily:
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     fontSize: "14px",
     margin: "24px 0",
-};
-
-const imageSection = {
-    backgroundColor: "#252f3d",
-    display: "flex",
-    padding: "20px 0",
-    alignItems: "center",
-    justifyContent: "center",
 };
 
 const coverSection = {backgroundColor: "#fff"};
