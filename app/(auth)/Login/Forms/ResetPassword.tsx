@@ -30,7 +30,7 @@ export default function ResetPassword({onClose, setCurrentForm}: Props) {
     const [verified, setVerified] = useState<boolean>(false);
     const [count, setCount] = useState<number>(0);
     const [sending, setSending] = useState<boolean>(false);
-    const [disabled, setDisabled] = useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [isVisible, setIsVisible] = React.useState(false);
 
     const timeoutId = useRef<NodeJS.Timeout>()
@@ -63,21 +63,22 @@ export default function ResetPassword({onClose, setCurrentForm}: Props) {
             setCount(count + 1);
             const random = ("" + Math.random()).substring(2, 7);
             setSending(true);
-            setDisabled(true);
+            setIsDisabled(true);
             setNumber(random);
             await onSendVerifyCode(random);
         } else {
+            setIsDisabled(true);
+            setSending(false);
             setError("verifyCode", {
                 message: "Вы исчерпали количество попыток. Повторите через 1 минуту.",
             })
-            setDisabled(true);
             timeoutId.current = setTimeout(() => {
+                setSending(true);
                 setCount(0);
-                setDisabled(false);
+                setIsDisabled(false);
             }, 60000);
             return () => clearTimeout(timeoutId.current);
         }
-
     }
 
     const onSendVerifyCode = async (number: string) => {
@@ -89,7 +90,7 @@ export default function ResetPassword({onClose, setCurrentForm}: Props) {
                 message: message?.error,
             })
         }
-        timeoutId.current = setTimeout(() => setDisabled(false), 1000);
+        timeoutId.current = setTimeout(() => setIsDisabled(false), 1000);
         return () => clearTimeout(timeoutId.current);
     }
 
@@ -127,7 +128,7 @@ export default function ResetPassword({onClose, setCurrentForm}: Props) {
                         />
                         {sending && getValues("verifyCode")?.length > 1 && getValues("verifyCode") !== number &&
                             <Paragraph size="s" className="text-[var(--red)] p-0">- Код не верный</Paragraph>}
-                        {disabled && errors.verifyCode && <Paragraph size="s"
+                        {!sending && errors.verifyCode && <Paragraph size="s"
                                                                      className="text-[var(--red)]">- {errors.verifyCode.message}</Paragraph>}
 
                         {!verified
@@ -136,11 +137,11 @@ export default function ResetPassword({onClose, setCurrentForm}: Props) {
                                     className="w-max"
                                     color="primary"
                                     type="button"
-                                    isDisabled={disabled}
+                                    isDisabled={isDisabled}
                                     onClick={randomNumber}>
                                     Отправить
                                 </Button>
-                                {!disabled &&
+                                {!isDisabled &&
                                     <Paragraph size="s" className="text-[var(--grey-light)] pt-2">нажмите, чтобы
                                         отправить
                                         код</Paragraph>}
