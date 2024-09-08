@@ -64,6 +64,6 @@ export const ResetPasswordFormSchema = z.object({
 })
 
 
-export type FormFields = z.infer<typeof SignupFormSchema>;
+export type SignupFormFields = z.infer<typeof SignupFormSchema>;
 export type LoginFormFields = z.infer<typeof SignInFormSchema>;
 export type ResetPasswordFormFields = z.infer<typeof ResetPasswordFormSchema>;

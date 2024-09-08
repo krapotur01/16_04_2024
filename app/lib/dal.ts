@@ -19,7 +19,7 @@ export const verifySession = React.cache(async () => {
 
     if (!user) return null;
 
-    return {isAuth: true, userId: user.id, userEmail: user.email, userName: user.name};
+    return {isAuth: true, userId: user.id, userEmail: user.email, userName: user.name, userAvatar: user.userAvatar};
 })
 
 export interface UserDTO {

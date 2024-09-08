@@ -1,10 +1,9 @@
 import React from "react";
 import type {Metadata} from "next";
-import {Header, Logo_section, MenuSection, Footer} from "./layout/index";
+import {Header, Logo_section, MenuSection, Footer} from "@/app/layout/index";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import styles from "./layout/layout.module.css";
-import {SpeedInsights} from '@vercel/speed-insights/next';
 import cn from "classnames";
 
 const inter = Inter({subsets: ["latin"]});
@@ -43,7 +42,6 @@ export default function RootLayout(
             <MenuSection/>
             {children}
             <Footer/>
-        <SpeedInsights/>
         </body>
         </html>
     );

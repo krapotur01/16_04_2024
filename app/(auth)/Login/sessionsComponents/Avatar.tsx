@@ -9,11 +9,19 @@ interface IProps {
     isAuth?: boolean,
     userEmail?: string,
     userName?: string,
+    userAvatar?: string | null,
 }
 
-export default function Avatar({isAuth, userEmail, userName}: IProps) {
+export default function Avatar({isAuth, userEmail, userName, userAvatar}: IProps) {
     if (!isAuth) return null;
 
+    const pathAvatar = (avatar: string | undefined | null) => {
+        if(avatar) {
+            return avatar;
+        } else {
+            return "/usersAvatars/avatar2.png";
+        }
+    }
     return (
         <Dropdown placement="bottom-start">
             <DropdownTrigger>
@@ -21,7 +29,7 @@ export default function Avatar({isAuth, userEmail, userName}: IProps) {
                     as="button"
                     avatarProps={{
                         isBordered: true,
-                        src: "/usersAvatars/avatar2.png",
+                        src: pathAvatar(userAvatar),
                     }}
                     className="transition-transform"
                     description={userEmail}

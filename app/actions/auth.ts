@@ -1,6 +1,6 @@
 'use server';
 
-import {LoginFormFields, ResetPasswordFormFields} from '@/app/lib/definitions';
+import {LoginFormFields} from '@/app/lib/definitions';
 import bcrypt, {compare} from 'bcrypt';
 import prisma from "@/app/lib/db";
 import {createSession, deleteSession} from "@/app/lib/session";
@@ -18,7 +18,10 @@ export async function uploadUserImage(image: File) {
 
     const path = join('./public', 'usersAvatars', image.name)
     await writeFile(path, buffer);
-    return path;
+
+    const slicePath = path.replace('public', '');
+
+    return slicePath;
 }
 
 export async function getUser(email: string) {
@@ -55,8 +58,9 @@ export async function mailResetPasswordVerification(email: string, number: strin
     return {success: `Код отправлен.`};
 }
 
-export async function resetPassword(formData: ResetPasswordFormFields) {
-    const {email, password} = formData;
+export async function resetPassword(formData: FormData) {
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
 
     const userEmail = await prisma.user.findUnique({
         where: {
@@ -74,9 +78,7 @@ export async function resetPassword(formData: ResetPasswordFormFields) {
 
     await createSession(updateUser.id);
 
-    return {
-        success: `Пароль обновлен успешно.`
-    }
+    return {success: `Пароль обновлен успешно.`}
 }
 
 export async function signup(formData: FormData) {
@@ -88,7 +90,7 @@ export async function signup(formData: FormData) {
     const imgUrl = await uploadUserImage(userImage);
 
     // Хешируем пароль пользователя перед его сохранением
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password as string, 10);
 
     // Создание пользователя в БД
     const newUser = await prisma.user.create({

@@ -13,15 +13,16 @@ interface IProps {
     isAuth?: boolean,
     userEmail?: string,
     userName?: string,
+    userAvatar?: string | null,
 }
 
-export default function Login({isAuth, userEmail, userName}: IProps ) {
+export default function Login({isAuth, userEmail, userName, userAvatar}: IProps ) {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     return (
         <>
             <LoginButton onOpen={onOpen} isAuth={isAuth}/>
-            <Avatar isAuth={isAuth} userEmail={userEmail} userName={userName}/>
+            <Avatar isAuth={isAuth} userEmail={userEmail} userName={userName} userAvatar={userAvatar}/>
             <Modal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}

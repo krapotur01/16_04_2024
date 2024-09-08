@@ -16,7 +16,7 @@ export const Header = async () => {
             </span>
 
             <div className={styles.auth}>
-                <Login isAuth={session?.isAuth} userEmail={session?.userEmail} userName={session?.userName} />
+                <Login isAuth={session?.isAuth} userEmail={session?.userEmail} userName={session?.userName} userAvatar={session?.userAvatar}/>
             </div>
         </header>
     );
