@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 import {MailIcon} from '../icons/MailIcon';
 import {LockIcon} from '../icons/LockIcon';
-import {login} from "@/app/actions/auth";
+import {getAllUsers, login} from "@/app/actions/auth";
 import {Paragraph} from "@/app/components";
 import {useForm, SubmitHandler} from "react-hook-form";
 import {LoginFormFields, SignInFormSchema} from "@/app/lib/definitions";
@@ -37,6 +37,7 @@ export default function SignIn({onClose, setCurrentForm}: Props) {
     } = useForm<LoginFormFields>({resolver: zodResolver(SignInFormSchema), mode: "onTouched"});
 
     const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
+        console.log(await getAllUsers())
         const message = await login(data)
         if (message.error) {
             setError("root", {

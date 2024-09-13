@@ -14,6 +14,7 @@ model User {
   userAvatar   String?
   name         String
   hashPassword String
+  status       String  @default("active")
   role         Role    @default(USER)
   card         Card?
 }
@@ -46,12 +47,12 @@ model Products {
   slug           String   @unique
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  card           Card     @relation(fields: [cardId], references: [id])
-  cardId         Int
+  card           Card?     @relation(fields: [cardId], references: [id])
+  cardId         Int?
 }
 
 model Category {
   id       Int        @id @default(autoincrement())
-  name     String
+  name     String     @unique
   products Products[]
 }

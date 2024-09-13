@@ -5,6 +5,7 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import styles from "./layout/layout.module.css";
 import cn from "classnames";
+import {Providers} from "./providers";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -37,11 +38,13 @@ export default function RootLayout(
             <title>Мебель</title>
         </head>
         <body className={cn(inter.className, styles.layout)}>
+        <Providers>
             <Header/>
             <Logo_section/>
             <MenuSection/>
             {children}
             <Footer/>
+        </Providers>
         </body>
         </html>
     );

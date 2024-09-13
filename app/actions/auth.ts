@@ -19,9 +19,7 @@ export async function uploadUserImage(image: File) {
     const path = join('./public', 'usersAvatars', image.name)
     await writeFile(path, buffer);
 
-    const slicePath = path.replace('public', '');
-
-    return slicePath;
+    return path.replace('public', '');
 }
 
 export async function getUser(email: string) {
@@ -30,6 +28,10 @@ export async function getUser(email: string) {
             email: email as string,
         }
     });
+}
+
+export async function getAllUsers() {
+    return prisma.user.findMany();
 }
 
 export async function mailSignUpVerification(email: string, number: string) {

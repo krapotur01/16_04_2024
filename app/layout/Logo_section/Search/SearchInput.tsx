@@ -1,9 +1,9 @@
 'use client';
 
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import styles from "./SearchInput.module.css";
-import Image from "next/image";
 import Link from "next/link";
+import ZoomIcon from "@/app/layout/Logo_section/Search/ZoomIcon";
 
 export const SearchInput = () => {
     const [query, setQuery] = useState("");
@@ -42,7 +42,7 @@ export const SearchInput = () => {
                 },
             }} className='h-[100%]'>
                 <button className={styles.button} onClick={onClick}>
-                    <Image src="zoom.svg" alt="лупа" width={16} height={16}/>
+                    <ZoomIcon/>
                 </button>
             </Link>
         </div>
